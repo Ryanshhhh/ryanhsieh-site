@@ -55,7 +55,11 @@ iframe.fr{opacity:1;z-index:2}
         await raf2();fin(true);}catch(e){fin(false);}};
     setTimeout(()=>fin(false),6000);nav(f,t);});}
   // location.replace, not src: changing a frame's src adds a history entry and breaks the back button
-  const nav=(f,t)=>{try{f.contentWindow.location.replace(new URL(t,location.href).href);}catch(e){f.src=t;}};
+  // ?v=BUILD on every page load: GitHub Pages lets browsers cache pages for 10 min, so without it a page
+  // opened again in the frame could come from cache as an older version (Ryan saw the old record label, 2026-11-13). Bump BUILD on each release.
+  const BUILD='71';
+  const bust=t=>{if(t==='about:blank')return t;const u=new URL(t,location.href);u.searchParams.set('v',BUILD);return u.href;};
+  const nav=(f,t)=>{try{f.contentWindow.location.replace(bust(t));}catch(e){f.src=bust(t);}};
   function swap(t){const o=fr;fr=bk;bk=o;fr.className='fr';bk.className='bk';
     fr.removeAttribute('aria-hidden');fr.removeAttribute('tabindex');fr.title='Ryan Hsieh';
     bk.setAttribute('aria-hidden','true');bk.tabIndex=-1;bk.title='';
