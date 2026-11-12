@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>/* page-transition cover (assets/transition.js): paint the incoming colour before anything else */try{var P=null;try{P=parent!==window&&parent.RH_SHELL;}catch(e){}if(!P&&!sessionStorage.getItem('rh-noshell')&&!/[?&]solo\b/.test(location.search)){location.replace('index.html#/work.html'+location.hash);}}catch(e){}try{var t=JSON.parse(sessionStorage.getItem('rh-tx')||'null');if(t&&Date.now()-t.t<5000&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var R=document.documentElement;R.classList.add('tx-hold');R.style.setProperty('--txc',t.c);R.style.background=t.c;setTimeout(function(){R.classList.remove('tx-hold');R.style.background='';},2500);}}catch(e){}</script>
+<style>@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation:none}html.tx-vt::view-transition-old(root){animation:txo .24s ease-in both}html.tx-vt::view-transition-new(root){animation:txi .42s cubic-bezier(.2,.7,.2,1) .04s both}@keyframes txo{to{opacity:0;transform:translateY(-10px)}}@keyframes txi{from{opacity:0;transform:translateY(14px)}}html.tx-hold::after{content:"";position:fixed;inset:0;z-index:9998;background:var(--txc)}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ryan Hsieh Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Inter:wght@300..900&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@300;400&display=swap">
+<style>
+/* Work page = the record's album page / liner notes. Same tokens as the turntable home (from social-impact-capital.com css/style.css). */
+:root{
+  --ground:#fcfcfc; --ink:#000; --blue:#2a2ecd; --blue-tint:#e1e7f5; --line:#b2b2b2; --mute:#6b6b6b; --vinyl:#0d0d0f;
+  --f-display:"Newsreader","Noto Serif TC","Times New Roman",Times,serif;      /* stand-in for Times Now */
+  --f-ui:"Inter","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;   /* stand-in for Suisse Int'l */
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--ground);scroll-padding-top:calc(var(--hdr,0px) + 16px)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:url("assets/wall-texture.jpg") center/cover no-repeat;opacity:.2;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+.wrap{padding:0 var(--gut);max-width:1440px;margin:0 auto}
+header.wrap{max-width:none}   /* header spans the full window like the home page */
+
+/* masthead, same as home */
+.top{display:flex;justify-content:space-between;align-items:flex-start;padding-top:22px;padding-bottom:14px;position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--ground) 86%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:padding .35s ease,box-shadow .35s ease}
+html.scrolled .top{padding-top:12px;padding-bottom:10px;box-shadow:0 1px 0 var(--line)}
+.mast .name,.mast nav{transition:font-size .35s ease,margin .35s ease}
+html.scrolled .mast .name{font-size:clamp(24px,2.4vw,34px)}
+html.scrolled .mast nav{font-size:clamp(16px,1.5vw,22px);margin-top:4px}
+.back{display:inline-flex;align-items:center;gap:10px}
+/* rewind button: tape-deck ◀◀ in the SIC corner-dot button (css/style.css .button .c1–.c4) */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;font:500 14px var(--f-ui);color:var(--ink);background:var(--ground);border:1px solid var(--ink);padding:9px 18px 9px 14px;cursor:pointer;transition:background .3s ease,color .3s ease}
+.btn i{position:absolute;width:9px;height:9px;border-radius:50%;border:1px solid var(--ink);background:var(--ground);transition:background .3s ease}
+.btn i:nth-child(1){left:-5px;top:-5px}.btn i:nth-child(2){right:-5px;top:-5px}.btn i:nth-child(3){left:-5px;bottom:-5px}.btn i:nth-child(4){right:-5px;bottom:-5px}
+.btn:hover,.btn:focus-visible{background:var(--blue);color:var(--ground)}
+.rw{display:inline-flex}
+.rw s{display:block;width:0;height:0;border-right:9px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.rw s+s{margin-left:-1px}
+.btn:hover .rw s{animation:nudge .5s ease-in-out infinite}
+.btn:hover .rw s+s{animation-delay:.08s}
+@keyframes nudge{50%{transform:translateX(-3px)}}
+/* rewinding: record spins backwards fast and goes back into its sleeve, the page winds up */
+.rewinding .sleeve .disc{transform:translateX(0)!important;transition:transform .55s cubic-bezier(.6,0,.8,.4)}
+.rewinding .sleeve .disc b{animation:spinback .25s linear infinite}
+.rewinding main{transition:opacity .55s ease,transform .55s cubic-bezier(.6,0,.8,.4);opacity:0;transform:translateY(40px)}
+@keyframes spinback{to{transform:rotate(-360deg)}}
+.mast{text-align:right}
+.mast .name{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:-.01em;text-decoration:none}
+.mast nav{display:flex;justify-content:flex-end;gap:.45em;margin-top:10px;font-family:var(--f-display);font-weight:300;font-size:clamp(20px,2.2vw,32px);line-height:1}
+.mast nav a{text-decoration:none;transition:opacity .3s ease}
+.mast nav a:hover,.mast a:focus-visible{opacity:.5}
+.mast nav a[aria-current]{color:var(--blue)}
+/* phone masthead (Ryan 2026-11-12): name left, the three links right, one row */
+@media (max-width:760px){.top{flex-wrap:wrap;gap:18px}.mast{order:-1;display:flex;justify-content:space-between;align-items:baseline;width:100%;text-align:left}.mast nav{margin-top:0}}
+
+
+/* hero: sleeve with the record half out, title + credits */
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,80px);align-items:end;padding:clamp(40px,7vw,96px) 0 clamp(40px,5vw,72px);border-bottom:1px solid var(--ink)}
+.sleeve{position:relative;width:min(calc(100% / 1.4),520px);aspect-ratio:1}
+.sleeve .disc{position:absolute;top:3%;left:3%;width:94%;height:94%;transform:translateX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .15s}
+.ready .sleeve .disc{transform:translateX(38%)}
+.sleeve .disc b{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle,transparent 0 31%,var(--vinyl) 31.5%),repeating-radial-gradient(circle,#0d0d0f 0 1.4px,#222226 1.4px 2.6px);
+  box-shadow:0 6px 20px rgba(0,0,0,.18);animation:spin 6s linear infinite}
+.sleeve .disc b::before{content:"";position:absolute;inset:31%;border-radius:50%;background:var(--img) center/cover,var(--blue)}
+.sleeve .disc b::after{content:"";position:absolute;inset:48.5%;border-radius:50%;background:var(--ground)}
+.sleeve .disc i{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 60deg,transparent 0 6%,rgba(255,255,255,.08) 10%,transparent 16% 50%,rgba(255,255,255,.05) 57%,transparent 63%)}
+.sleeve img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;background:var(--blue-tint);
+  box-shadow:0 1px 0 rgba(0,0,0,.08),6px 10px 28px rgba(0,0,0,.16)}
+.sleeve::after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.16),transparent 35% 70%,rgba(0,0,0,.07)),linear-gradient(90deg,rgba(0,0,0,.1),transparent 3%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* CD cover mode: the case is the sleeve; the disc printed in it does the turning, so no vinyl slides out */
+.cd .sleeve{width:min(100%,560px);aspect-ratio:951/844}   /* box = the case's visible edges (alpha bbox 24,62–975,906 of the 1000px webp), so it lines up with the gutter and the credits' last rule */
+.cd .sleeve .disc{display:none}
+.cd .sleeve img{position:absolute;left:-2.524%;top:-7.346%;width:105.152%;height:118.483%;max-width:none;object-fit:fill;background:none;box-shadow:none}
+.cd .sleeve::after{display:none}
+/* CD case in three stacked layers (assets/cdx, make-cd-layers.py): case, printed disc, still light + obi. The disc turns under
+   the still case: a spin-in on arrival, a slow turn under the pointer, drag or flick to spin it, arrow keys too; the case tilts a little with the pointer */
+.cd .sleeve.cx{perspective:1400px;touch-action:pan-y;cursor:grab;outline:none;-webkit-tap-highlight-color:transparent}
+.cd .sleeve.cx.grab{cursor:grabbing}
+.cd .sleeve.cx .cx-in{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.cd .sleeve.cx.live .cx-in{transition:transform .12s linear}
+.cd .sleeve.cx img{user-select:none;-webkit-user-drag:none;pointer-events:none}
+.cd .sleeve.cx .cx-d{transform-origin:51.116% 49.522%;will-change:transform}
+.cd .sleeve.cx:focus-visible{outline:2px solid var(--blue);outline-offset:6px}
+
+.kicker{font-size:13px;color:var(--blue);font-variant-numeric:tabular-nums;margin:0 0 18px}
+h1{font-family:var(--f-display);font-weight:300;font-size:clamp(44px,6vw,96px);line-height:.95;letter-spacing:-.03em;margin:0 0 28px;text-wrap:balance}
+.credits{margin:0;border-top:1px solid var(--line)}
+.credits div{display:grid;grid-template-columns:11em minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.credits dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+.credits dd{margin:0}
+.todo{color:var(--mute)}
+
+/* liner notes */
+.sec{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(24px,4vw,64px);padding:clamp(36px,5vw,64px) 0;border-bottom:1px solid var(--line)}
+.sec h2{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:4px 0 0}
+.notes{font-family:var(--f-display);font-weight:300;font-size:clamp(22px,2.2vw,30px);line-height:1.35;letter-spacing:-.01em;max-width:30em;margin:0}
+
+/* media tracklist */
+.tl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tl li{border-bottom:1px solid var(--line)}
+.tl a{display:grid;grid-template-columns:2.4em 1.4em minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 8px;text-decoration:none;transition:background .3s ease}
+.tl a:hover,.tl a:focus-visible{background:rgba(42,46,205,.05)}
+.tl .n{font-size:14px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tl .p{width:0;height:0;border-left:9px solid var(--ink);border-top:5.5px solid transparent;border-bottom:5.5px solid transparent}
+.tl .t{font-family:var(--f-display);font-weight:300;font-size:24px;line-height:1.1}
+.tl .u{font-size:13px;color:var(--mute)}
+.tl a:hover .t,.tl a:hover .p{color:var(--blue);border-left-color:var(--blue)}
+
+/* gallery */
+.gal{display:flex;flex-direction:column;gap:clamp(40px,6vw,96px);padding:clamp(40px,6vw,96px) 0;border-bottom:1px solid var(--line)}
+.gal figure{margin:0;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(24px,4vw,64px)}
+.gal figcaption{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;align-self:start;position:sticky;top:calc(var(--hdr,0px) + 24px)}
+.gal img{display:block;width:100%;height:auto;background:var(--blue-tint);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.empty{border:1px dashed var(--line);padding:40px 24px;color:var(--mute);font-size:14px}
+
+/* booklet: every block from the old Cargo page, in its original order */
+.book{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(24px,4vw,64px);padding:clamp(36px,5vw,64px) 0;border-bottom:1px solid var(--line)}
+.book aside{align-self:start;position:sticky;top:calc(var(--hdr,0px) + 24px)}
+.book aside h2{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:4px 0 8px}
+.book aside p{font-size:13px;color:var(--mute);margin:0;font-variant-numeric:tabular-nums}
+.flow{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,36px);min-width:0}
+.flow .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.flow .tags li:has(a){padding:0}
+.tags a{display:block;padding:4px 10px;color:inherit;text-decoration:none;transition:background .2s,color .2s}
+.tags a:hover,.tags a:focus-visible{background:var(--blue);color:var(--ground)}
+html:is([data-w="KlassiC"],[data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) .hero + .book .tags a:hover{background:#fff;color:#111}
+.tags li.plain{opacity:.75;border-style:dashed}
+/* tag view */
+.tagv{grid-template-columns:1fr;min-height:0;padding-top:clamp(40px,8vw,120px)}
+.tagv h1{font-size:clamp(48px,8vw,120px)}
+.tagl a{grid-template-columns:2.4em 64px minmax(0,1fr) auto}
+.tagl img{width:64px;height:64px;object-fit:contain;display:block}
+.tagl .t{font-size:clamp(20px,2vw,28px)}
+.tagl .t-en::before{content:" "}
+.tagc{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tagc li{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);border:1px solid currentColor}
+.tagc small{margin-left:.6em;font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
+.tagc li.on{background:var(--blue)}.tagc li.on a{color:var(--ground)}
+@media (max-width:760px){.tagl a{grid-template-columns:2em 48px minmax(0,1fr)}.tagl img{width:48px;height:48px}.tagl .u{display:none}}
+.flow .tags li{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);border:1px solid currentColor;padding:4px 10px}
+.flow .txt{font-family:var(--f-ui);font-size:clamp(16px,1.25vw,18px);line-height:1.8;max-width:36em;margin:0;white-space:pre-line}
+.flow .txt.first{font-family:var(--f-display);font-weight:300;font-size:clamp(21px,2vw,28px);line-height:1.45;letter-spacing:-.005em;max-width:26em}
+.flow figure{margin:0;position:relative}
+.flow figure img,.flow figure video{display:block;width:100%;height:auto;background:var(--blue-tint)}
+.flow figure.narrow img{width:auto;max-width:100%}
+.flow figcaption{font-size:12px;color:var(--mute);padding-top:8px;font-variant-numeric:tabular-nums}
+.flow .vm{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:#000 center/cover no-repeat;cursor:pointer}
+.flow .vm::after{content:"";position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:rgba(252,252,252,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l10 6-10 6z' fill='%232a2ecd'/%3E%3C/svg%3E") center/34px no-repeat;transition:transform .3s ease}
+.flow .vm:hover::after,.flow .vm:focus-visible::after{transform:scale(1.08)}
+.flow iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.flow .vm-out{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;background:var(--blue-tint);color:var(--blue);font-size:15px;text-align:center;padding:24px}
+.car{--ch:clamp(260px,58vh,620px);margin-right:calc(-1*max(16px,env(safe-area-inset-right,0px)));min-width:0}
+.car-track{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;padding:0 max(16px,env(safe-area-inset-right,0px)) 2px 0;scrollbar-width:none;cursor:grab;outline-offset:4px}
+.car-track::-webkit-scrollbar{display:none}
+.car-track.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.car-track.drag img{pointer-events:none}
+.flow .car figure.slide{flex:0 0 auto;height:var(--ch);width:min(calc(var(--ch)*var(--r)),86vw);scroll-snap-align:start;background:var(--blue-tint);overflow:hidden;cursor:zoom-in;transition:opacity .4s ease}
+.flow .car .slide img,.flow .car .slide video{width:100%;height:100%;object-fit:cover;object-position:50% 0;-webkit-user-drag:none}
+.car-ctl{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;padding:18px max(16px,env(safe-area-inset-right,0px)) 0 0}
+.car-n{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.car-n b{font-weight:500;color:var(--blue)}
+.car-bar{height:1px;background:var(--line);position:relative;overflow:hidden}
+.car-bar i{position:absolute;inset:0;background:var(--ink);transform-origin:0 50%;transform:scaleX(.04);transition:transform .2s linear}
+.car-btns{display:flex;gap:14px}
+.car-btns .btn{padding:7px 14px}
+.lb{border:0;padding:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;background:transparent}
+.lb::backdrop{background:rgba(252,252,252,.96)}
+.lb[open]{display:grid;grid-template-rows:minmax(0,1fr) auto}
+.lb-stage{display:grid;place-items:center;min-height:0;padding:24px max(16px,env(safe-area-inset-left,0px)) 0}
+.lb-stage img,.lb-stage video{max-width:100%;max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px);width:auto;height:auto;object-fit:contain;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px max(16px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px))}
+@media (max-width:760px){.car{--ch:clamp(220px,52vh,440px)}.car-ctl{gap:12px}.car-btns .btn{padding:6px 11px}}
+.hero h1 .t-zh,.hero h1 .t-en{display:block}
+.hero h1 .t-zh{line-height:1.1;margin-bottom:.06em}
+.flow .cut{border:0;border-top:1px solid var(--ink);margin:clamp(28px,4vw,56px) 0 0;width:100%}
+.flow .cut+.cut{display:none}
+.flow .part{font-family:var(--f-display);font-weight:300;font-size:clamp(30px,3.4vw,52px);line-height:1.05;letter-spacing:-.02em;margin:0}
+.flow .part.sub{font-size:clamp(24px,2.4vw,34px);margin-top:12px}
+.flow .part span{display:block;font-family:var(--f-ui);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.flow .txt.cite{font-size:14px;color:var(--mute);margin-top:-.6em}
+.flow .txt.cite a{color:var(--blue);text-decoration:none;border-bottom:1px solid currentColor}
+.flow .lnk{font-size:15px;color:var(--blue);text-decoration:none;align-self:flex-start;border-bottom:1px solid currentColor}
+.flow .lnk:hover{opacity:.6}
+
+/* prev / next track */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:40px 0 calc(56px + env(safe-area-inset-bottom,0px))}
+.pn a{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;align-items:center;text-decoration:none;padding:12px 8px;transition:background .3s ease}
+.pn a:hover,.pn a:focus-visible{background:rgba(42,46,205,.05)}
+.pn a.next{grid-template-columns:minmax(0,1fr) 64px;text-align:right}
+.pn img{width:64px;height:64px;object-fit:cover;display:block;box-shadow:2px 3px 8px rgba(0,0,0,.14)}
+.pn small{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.pn span{font-family:var(--f-display);font-weight:300;font-size:24px;line-height:1.1}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;align-items:start}
+  .sleeve{width:66%}
+  .sec,.gal figure{grid-template-columns:1fr;gap:14px}
+  .gal figcaption{position:static}
+  .book{grid-template-columns:1fr;gap:14px}.book aside{position:static}
+  .credits div{grid-template-columns:8.5em minmax(0,1fr)}
+  .pn{grid-template-columns:1fr}
+  .pn a.next{grid-template-columns:minmax(0,1fr) 64px}
+  .tl .u{display:none}
+}
+@media (prefers-reduced-motion: reduce){.sleeve .disc b{animation:none}.sleeve .disc{transition:none}}
+
+/* ---------- Photo Sphere: experimental page. The old page's 11 mid-capture screenshots float on one field you look around,
+   like moving the phone during a Photo Sphere capture; the viewfinder (frame + circle, as in the screenshots) reads the capture under it.
+   Time stamps come from the screenshot file names (Screenshot_YYYYMMDD-HHMMSS). ---------- */
+html.ps{--ground:#0c0c0e;--ink:#f3f3f1;--line:#38383d;--mute:#9b9ba2;--blue:#9497ff;--blue-tint:#1b1b22;color-scheme:dark}
+html.ps body::before{display:none}
+.psf{position:relative;height:100vh;height:100svh;margin:0 calc(-1*var(--gut));overflow:hidden;background:#0c0c0e;cursor:crosshair;touch-action:pan-y;user-select:none}
+.psf .field{position:absolute;left:0;top:0;width:calc(3200*var(--k));height:calc(2100*var(--k));will-change:transform}
+.psf figure{position:absolute;margin:0;transform:translate(-50%,-50%) rotate(var(--rot));width:calc(var(--w)*var(--k));opacity:.42;filter:saturate(.6);transition:opacity .5s ease,filter .5s ease;box-shadow:0 10px 40px rgba(0,0,0,.5);cursor:zoom-in}
+.psf figure img{display:block;width:100%;height:auto;-webkit-user-drag:none;pointer-events:none}
+.psf figure.hit{opacity:1;filter:none;z-index:5}
+.psf .vf{position:absolute;left:50%;top:50%;width:min(26vh,44vw);aspect-ratio:3/4;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,.92);pointer-events:none;z-index:20}
+.psf .vf::after{content:"";position:absolute;left:50%;top:50%;width:44%;aspect-ratio:1;transform:translate(-50%,-50%);border:4px solid rgba(255,255,255,.6);border-radius:50%}
+.psf .hud{position:absolute;right:var(--gut);bottom:calc(58px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-end;gap:10px;z-index:21;pointer-events:none;font-size:13px;color:#d9d9de;font-variant-numeric:tabular-nums;letter-spacing:.04em;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.psf .hud b{font-weight:500;color:#fff}
+.psf .hud .rec::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff3b30;margin-right:8px;vertical-align:1px;animation:rec 1.6s steps(2) infinite}
+@keyframes rec{50%{opacity:0}}
+.psf .stamp{font-family:var(--f-display);font-weight:300;font-size:clamp(28px,4vw,56px);line-height:1;color:#fff;letter-spacing:-.01em;text-align:right}
+.psf .cap{text-shadow:0 2px 24px rgba(0,0,0,.5);position:absolute;left:var(--gut);bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:21;pointer-events:none;color:#fff}
+.psf .cap .kicker{margin:0 0 10px}
+.psf .cap h1{font-size:clamp(56px,9vw,150px)}
+.psf .hint{margin:0;position:absolute;right:var(--gut);bottom:calc(28px + env(safe-area-inset-bottom,0px));text-shadow:0 1px 12px rgba(0,0,0,.6);z-index:21;pointer-events:none;font-size:13px;color:#b9b9c0}
+.ps .pscred{padding:clamp(36px,5vw,64px) 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(24px,4vw,64px)}
+html.ps .top{position:fixed;left:0;right:0;top:0;z-index:30;max-width:none;text-shadow:0 1px 14px rgba(0,0,0,.55);background:none;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+html.ps .top .btn{text-shadow:none}
+@media (max-width:760px){.psf .hud{left:var(--gut);right:auto;align-items:flex-start;top:150px;bottom:auto}.psf .stamp{text-align:left;font-size:30px}.psf .hint{display:none}.ps .pscred{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.psf .hud .rec::before{animation:none}}
+
+/* ---------- experimental pages (Ryan 2026-11-12): Lost in Time, Wasting Time on the Internet, More is the New Normal ---------- */
+html.exp body::before{display:none}
+.xcred{padding:clamp(36px,5vw,64px) 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(24px,4vw,64px)}
+.xhero{padding:clamp(48px,8vw,120px) 0 clamp(36px,5vw,72px);border-bottom:1px solid var(--line)}
+.xhero h1{font-size:clamp(56px,10vw,168px)}
+.xhint{font-size:13px;color:var(--mute);margin:14px 0 0}
+@media (max-width:760px){.xcred{grid-template-columns:1fr}}
+
+/* Lost in Time — a darkroom: frames sit as negatives on film strips and develop when they reach the middle of the screen */
+html.x-lit{--ground:#0b0806;--ink:#efe6d8;--line:#3a2f26;--mute:#a08f7c;--blue:#ff8a3d;--blue-tint:#22190f;color-scheme:dark}
+html.x-lit body{background:#0b0806}
+.lit-clock{font-family:var(--f-display);font-weight:300;font-size:clamp(28px,3.4vw,52px);font-variant-numeric:tabular-nums;margin:22px 0 0;color:var(--blue)}
+.lit-clock small{display:block;font-family:var(--f-ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.lit-poem{padding:clamp(36px,6vw,96px) 0;border-bottom:1px solid var(--line);max-width:46em}
+.lit-poem p{font-family:var(--f-display);font-weight:300;font-size:clamp(20px,2.1vw,30px);line-height:1.5;margin:0 0 .3em;opacity:.12;transform:translateY(8px);transition:opacity 1.2s ease,transform 1.2s ease}
+.lit-poem p.zhl{font-family:var(--f-ui);font-weight:400;font-size:clamp(17px,1.5vw,21px);line-height:1.9}
+.lit-poem p.in{opacity:1;transform:none}
+.roll{padding:clamp(36px,5vw,72px) 0 0}
+.roll h2{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.strip{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin:0 calc(-1*var(--gut));padding:0 var(--gut);cursor:grab}
+.strip::-webkit-scrollbar{display:none}
+.frame{flex:0 0 auto;margin:0;background:#0b0806;padding:30px 14px;position:relative;scroll-snap-align:center;cursor:zoom-in;
+  background-image:repeating-linear-gradient(90deg,transparent 0 10px,#e9dccb 10px 22px,transparent 22px 34px),repeating-linear-gradient(90deg,transparent 0 10px,#e9dccb 10px 22px,transparent 22px 34px);
+  background-size:100% 12px,100% 12px;background-position:0 9px,0 calc(100% - 9px);background-repeat:repeat-x}
+.frame img{display:block;height:clamp(220px,46vh,460px);width:auto;filter:invert(1) sepia(.55) saturate(1.6) hue-rotate(-12deg) brightness(.92);transition:filter 1.6s ease;-webkit-user-drag:none}
+.frame.dev img{filter:none}
+.frame figcaption{position:absolute;left:16px;bottom:-1px;font:500 10px var(--f-ui);letter-spacing:.14em;color:#ff8a3d}
+@media (prefers-reduced-motion: reduce){.lit-poem p{opacity:1;transform:none}.frame img{transition:none}}
+
+/* Wasting Time on the Internet — the stills as windows piling up on a desktop; drag them, a clock counts the time you spend here */
+html.x-wt{--ground:#0b0b0d;--ink:#eaeaea;--line:#333;--mute:#9a9a9a;--blue:#39ff88;--blue-tint:#161616;color-scheme:dark}
+.wt-bar{position:sticky;top:var(--hdr,0px);z-index:40;display:flex;justify-content:space-between;gap:16px;align-items:center;margin:0 calc(-1*var(--gut));padding:10px var(--gut);background:#0b0b0d;border-bottom:1px solid var(--line);font:500 13px var(--f-ui);font-variant-numeric:tabular-nums;color:var(--mute)}
+.wt-bar b{color:var(--blue);font-weight:500;font-size:15px}
+.wt-desk{position:relative;height:clamp(640px,120vh,1200px);margin:0 calc(-1*var(--gut));overflow:hidden;border-bottom:1px solid var(--line);
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px),#0b0b0d}
+.wt-desk::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 2px);mix-blend-mode:multiply;z-index:900}
+.win{position:absolute;width:min(46vw,620px);margin:0;background:#1a1a1d;border:1px solid #4a4a50;box-shadow:8px 8px 0 rgba(0,0,0,.55);touch-action:none}
+.win .tb{display:flex;align-items:center;justify-content:space-between;gap:10px;height:26px;padding:0 8px;background:#2a2a30;border-bottom:1px solid #4a4a50;font:500 11px var(--f-ui);color:#cfcfd4;cursor:move;user-select:none}
+.win .tb i{display:flex;gap:5px}.win .tb i::before,.win .tb i::after,.win .tb i span{content:"";width:9px;height:9px;border:1px solid #8a8a90}
+.win img{display:block;width:100%;height:auto;cursor:zoom-in;-webkit-user-drag:none}
+.win.top .tb{background:var(--blue);color:#0b0b0d}
+.win.glitch img{animation:gl .28s steps(2) 1}
+@keyframes gl{0%{transform:translate(0);filter:none}25%{transform:translate(-6px,2px);filter:drop-shadow(4px 0 0 #ff0050) drop-shadow(-4px 0 0 #00e0ff)}50%{transform:translate(5px,-2px)}100%{transform:none;filter:none}}
+@media (max-width:760px){.win{width:78vw}}
+@media (prefers-reduced-motion: reduce){.win.glitch img{animation:none}}
+
+/* More is the New Normal — every move copies the poster again; the poem echoes */
+html.x-more{--blue:#2a2ecd}
+.more-poem{padding:clamp(36px,6vw,96px) 0;border-bottom:1px solid var(--line)}
+.more-poem p{font-family:var(--f-display);font-weight:300;font-size:clamp(30px,4.6vw,76px);line-height:1.05;letter-spacing:-.02em;margin:0 0 .12em;
+  text-shadow:.06em .06em 0 rgba(42,46,205,.35),.12em .12em 0 rgba(42,46,205,.22),.18em .18em 0 rgba(42,46,205,.12)}
+.more-poem p:last-child{color:var(--blue)}
+.more-stage{position:relative;height:clamp(560px,100vh,960px);margin:0 calc(-1*var(--gut));overflow:hidden;border-bottom:1px solid var(--line);cursor:copy;touch-action:pan-y}
+.more-stage .clone{position:absolute;width:clamp(140px,18vw,260px);height:auto;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:opacity 2.4s ease}
+.more-stage .count{position:absolute;right:var(--gut);bottom:20px;font-family:var(--f-display);font-weight:300;font-size:clamp(40px,7vw,120px);line-height:1;color:var(--blue);font-variant-numeric:tabular-nums;pointer-events:none;z-index:500}
+.more-stage .xhint{position:absolute;left:var(--gut);bottom:24px;z-index:500}
+
+/* Countdown — three time zones */
+html.x-cd{--ground:#060608;--ink:#f1f1f3;--line:#2a2a31;--mute:#8e8e98;--blue:#6d70ff;--blue-tint:#15152a;color-scheme:dark}
+html.x-cd body{background:#060608}
+.cd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.cd-col{padding:clamp(24px,3vw,44px) clamp(14px,2vw,28px) clamp(28px,3vw,48px);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.cd-col:first-child{border-left:0;padding-left:0}
+.cd-city{font-family:var(--f-display);font-weight:300;font-size:clamp(30px,3.6vw,60px);line-height:1;margin:0}
+.cd-city small,.cd-now small,.cd-left small{display:block;font:500 11px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:8px}
+.cd-now,.cd-left{margin:0;font-variant-numeric:tabular-nums}
+.cd-now span{font-size:clamp(18px,1.6vw,24px)}
+.cd-left span{font-family:var(--f-display);font-weight:300;font-size:clamp(26px,2.8vw,46px);color:var(--blue);letter-spacing:-.01em}
+.cd-col video{width:100%;height:auto;display:block;margin-top:8px;background:#000}
+@media (max-width:760px){.cd-grid{grid-template-columns:1fr}.cd-col{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-right:0}.cd-col:first-child{border-top:0}}
+/* Crisis in New York — noise follows scroll speed */
+html.x-noise{--ground:#1a1a19;--ink:#e9e7e2;--line:#3a3936;--mute:#9c998f;--blue:#ffd23f;--blue-tint:#262520;color-scheme:dark}
+html.x-noise body{background:#1a1a19;overflow-x:clip}
+.nz-cv{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60;opacity:0;mix-blend-mode:screen;image-rendering:pixelated}
+.nz-meter{position:fixed;right:var(--gut);bottom:18px;z-index:61;display:flex;align-items:center;gap:10px;font:500 11px var(--f-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);pointer-events:none}
+.nz-meter span{display:flex;gap:3px;align-items:flex-end;height:18px}
+.nz-meter i{width:4px;height:30%;background:var(--line);transition:background .1s}
+.nz-meter i:nth-child(n+5){height:55%}.nz-meter i:nth-child(n+9){height:100%}
+.nz-meter i.on{background:var(--ink)}.nz-meter i.on:nth-child(n+9){background:var(--blue)}
+html.x-noise .flow figure,html.x-noise .flow .car{transform:translateX(var(--jx,0))}
+/* Virtual Temple — ripples and incense smoke */
+html.x-vt{--ground:#110a08;--ink:#f1e6d3;--line:#3a2a20;--mute:#a8927a;--blue:#e3ad4f;--blue-tint:#22160e;color-scheme:dark}
+html.x-vt body{background:#110a08}
+.vt-stage{position:relative;height:clamp(420px,72vh,760px);margin:0 calc(-1*var(--gut));border-bottom:1px solid var(--line);cursor:crosshair;touch-action:pan-y;overflow:hidden;background:radial-gradient(60% 70% at 50% 100%,#2a170c 0%,transparent 70%)}
+.vt-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vt-stage .xhint{position:absolute;left:var(--gut);bottom:20px;margin:0}
+.vt-el{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.vt-el li+li{border-left:1px solid var(--line)}
+.vt-el button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;padding:clamp(18px,2.4vw,32px) 12px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;color:var(--mute);transition:color .3s,background .3s}
+.vt-el button b{font-family:var(--f-display);font-weight:300;font-size:clamp(34px,4.6vw,72px);line-height:1;color:var(--ink);transition:color .3s}
+.vt-el button span{font:500 11px var(--f-ui);letter-spacing:.12em;text-transform:uppercase}
+.vt-el button small{font-size:12px}
+.vt-el button:hover b,.vt-el button[aria-pressed] b{color:var(--c)}
+.vt-el button[aria-pressed]{background:var(--blue-tint)}
+.vt-el button:focus-visible{outline:2px solid var(--c);outline-offset:-4px}
+@media (max-width:760px){.vt-el button small{display:none}}
+
+/* COEXIST — palette from its own screens: black, red, violet, BUY NOW green */
+html.x-co{--ground:#050505;--ink:#f2f2f2;--line:#2b2b2b;--mute:#9b9b9b;--blue:#7b2cff;--blue-tint:#170b2b;color-scheme:dark}
+html.x-co body{background:#050505}
+html.x-co .xhero h1{color:#ff2a2a;font-style:italic}
+.co-win{margin:clamp(28px,4vw,56px) 0;border:1px solid var(--line);background:#111}
+.co-bar{display:flex;align-items:center;gap:16px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 12px var(--f-ui)}
+.co-dots{display:flex;gap:6px}.co-dots i{width:10px;height:10px;border-radius:50%;background:#333}
+.co-tabs{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.co-tabs button{all:unset;cursor:pointer;padding:5px 10px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.co-tabs button:hover{color:var(--ink)}
+.co-tabs button[aria-pressed]{background:#1ee01e;color:#000}
+.co-tabs button:focus-visible{outline:2px solid #1ee01e;outline-offset:2px}
+.co-n{color:var(--mute);font-variant-numeric:tabular-nums}
+.co-screen{position:relative;overflow:hidden;aspect-ratio:1600/975;cursor:none;touch-action:pan-y}
+.co-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none}
+.co-real{cursor:pointer}
+.co-clone{mix-blend-mode:difference;opacity:.38;filter:hue-rotate(200deg) saturate(1.4);pointer-events:none;will-change:transform}
+.co-ghost{position:absolute;left:0;top:0;pointer-events:none;font:600 10px var(--f-ui);letter-spacing:.14em;color:#000;background:#1ee01e;padding:3px 6px;margin:10px 0 0 10px;will-change:transform;z-index:2}
+.co-ghost::before{content:"";position:absolute;left:-10px;top:-10px;width:12px;height:12px;border:2px solid #1ee01e;border-radius:50%}
+.co-step{all:unset;position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;display:grid;place-items:center;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;z-index:3;font-size:16px}
+.co-prev{left:10px}.co-next{right:10px}
+.co-step:focus-visible{outline:2px solid #1ee01e}
+@media (hover:none){.co-screen{cursor:auto}.co-ghost{display:none}}
+@media (max-width:760px){.co-n{display:none}}
+/* Eros Obsess — black and white, like its poster */
+html.x-er{--ground:#000;--ink:#f4f4f4;--line:#2a2a2a;--mute:#9a9a9a;--blue:#ffffff;--blue-tint:#141414;color-scheme:dark}
+html.x-er body{background:#000}
+.er-stage{position:relative;margin:clamp(28px,4vw,56px) calc(-1*var(--gut));aspect-ratio:1000/563;overflow:hidden;cursor:ew-resize;touch-action:pan-y;background:#000}
+.er-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;filter:grayscale(.15) contrast(1.05)}
+.er-rope{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.er-rope path{fill:none;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px rgba(0,0,0,.7))}
+.er-rope circle{fill:#fff}
+.er-tc,.er-n{position:absolute;bottom:16px;font:500 12px var(--f-ui);letter-spacing:.1em;color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;font-variant-numeric:tabular-nums}
+.er-tc{left:var(--gut)}.er-n{right:var(--gut)}
+
+/* WTNC — one TV, three channels; black and the brand pink from its own logo animation */
+html.x-tv{--ground:#070607;--ink:#f3eef2;--line:#2c2529;--mute:#a1949c;--blue:#ff63c8;--blue-tint:#22101b;color-scheme:dark}
+html.x-tv body{background:#070607}
+/* Bliss Lau — silver from _vimeo/437274491.jpg (#dcdddc, #b7bebc, #949f9e) on graphite */
+html.x-bl{--ground:#0f1212;--ink:#e8eaea;--line:#2a3030;--mute:#949f9e;--blue:#dcdddc;--blue-tint:#1a1f1f;color-scheme:dark}
+html.x-bl body{background:#0f1212}
+.bl{padding:clamp(24px,4vw,56px) 0;border-bottom:1px solid var(--line)}
+.bl-stage{position:relative;width:min(100%,82vh);aspect-ratio:1;margin:0 auto;border-radius:50%;overflow:hidden;cursor:crosshair;box-shadow:0 0 0 1px #2a3030,0 40px 120px rgba(0,0,0,.6)}
+.bl-stage canvas{display:block;width:100%;height:100%}
+.bl-n{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);margin:0;font:500 12px var(--f-ui);letter-spacing:.14em;text-transform:uppercase;color:#fff;mix-blend-mode:difference;pointer-events:none}
+.bl-ctl{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:28px;flex-wrap:wrap}
+.bl-src{display:flex;gap:8px;flex-wrap:wrap}
+.bl-src button{display:grid;gap:6px;width:112px;padding:0;border:0;background:none;color:var(--mute);font:500 11px var(--f-ui);text-align:left;cursor:pointer}
+.bl-src img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;outline:1px solid var(--line);outline-offset:2px;transition:outline-color .2s,filter .3s;filter:grayscale(.6)}
+.bl-src button[aria-pressed="true"]{color:var(--ink)}.bl-src button[aria-pressed="true"] img{outline-color:var(--ink);filter:none}
+.bl-seg{display:flex;gap:6px}
+.bl-seg button{min-width:44px;height:36px;border:1px solid var(--line);background:none;color:var(--mute);font:500 13px var(--f-ui);cursor:pointer}
+.bl-seg button[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+/* Meier.Q — colours from covers/Meier-Q.jpg */
+html.x-mq{--ground:#1b0c0e;--ink:#f0e2d6;--line:#3a2422;--mute:#b08a74;--blue:#d8a98a;--blue-tint:#2a1517;color-scheme:dark}
+html.x-mq body{background:#1b0c0e}
+html.x-mq .xhero h1{font-weight:300;letter-spacing:.06em;text-transform:uppercase}
+.mq{padding:clamp(24px,4vw,56px) 0;border-bottom:1px solid var(--line);display:grid;gap:clamp(24px,4vw,48px)}
+.mq-stage{position:relative;width:min(100%,78vh);aspect-ratio:1;margin:0 auto;overflow:hidden;cursor:none;--mx:50%;--my:42%;--r:22%}
+.mq-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none}
+.mq-base{filter:brightness(.16) saturate(.5) sepia(.4)}
+.mq-lit{-webkit-mask:radial-gradient(circle at var(--mx) var(--my),#000 0,#000 var(--r),transparent calc(var(--r)*1.9));mask:radial-gradient(circle at var(--mx) var(--my),#000 0,#000 var(--r),transparent calc(var(--r)*1.9))}
+.mq-tag{position:absolute;left:0;right:0;bottom:5%;text-align:center;font:300 clamp(14px,1.6vw,20px) var(--f-display);letter-spacing:.4em;color:#f0e2d6;opacity:.55;pointer-events:none}
+.mq-screen{width:min(100%,960px);margin:0 auto}
+.mq-vm{position:relative;display:block;width:100%;padding:0;border:0;background:#000;cursor:pointer;overflow:hidden}
+.mq-vm img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .3s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.mq-vm:hover img{opacity:1;transform:scale(1.02)}
+.mq-play{position:absolute;left:16px;bottom:14px;font:500 13px var(--f-ui);letter-spacing:.06em;color:#f0e2d6;background:rgba(27,12,14,.7);padding:6px 10px}
+.mq-screen iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+@media (max-width:760px){.bl-src button{width:84px}.mq-stage{cursor:auto}}
+/* Meier.Q: standard layout, warm-dark colours from covers/Meier-Q.jpg kept (Ryan 2026-11-12) */
+html[data-w="Meier-Q"]{--ground:#1b0c0e;--ink:#f0e2d6;--line:#3a2422;--mute:#b08a74;--blue:#d8a98a;--blue-tint:#2a1517;color-scheme:dark}
+html[data-w="Meier-Q"] body{background:#1b0c0e}
+html[data-w="Meier-Q"] body::before{display:none}
+/* KlassiC: brand-blue → white gradient (Ryan 2026-11-12). Blue #003090 sampled from works/KlassiC/09,12,15.jpg; not a confirmed brand swatch */
+html[data-w="KlassiC"] body{background:linear-gradient(180deg,#003090 0,#123ea0 620px,#8ea6dc 980px,#dfe6f5 1300px,#fcfcfc 1800px) no-repeat,#fcfcfc}
+html[data-w="KlassiC"] .hero + .book .tags li{color:#fff;border-color:rgba(255,255,255,.65)}
+html[data-w="KlassiC"] body::before{opacity:.1}
+html[data-w="KlassiC"] .top{background:color-mix(in srgb,#003090 88%,transparent);--ink:#fff;--ground:#003090;--blue:#b9c8ea;--line:rgba(255,255,255,.3);color:#fff}
+html[data-w="KlassiC"] .hero{color:#fff;--ink:#fff;--line:rgba(255,255,255,.35);--mute:rgba(255,255,255,.72);--blue:#b9c8ea;border-bottom-color:rgba(255,255,255,.55)}
+/* Gradient grounds for the white CD-case pages (Ryan 2026-11-12), same build as KlassiC: the work's colour behind the hero, fading to the paper
+   white by the reading text. Stops: g0 (top) → g1 → g2 → g3 → #fcfcfc. Each colour names the file it was sampled from; "derived" = mixed by me, not sampled */
+html:is([data-w="Parlor-Social-Club"],[data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) body{
+  background:linear-gradient(180deg,var(--g0) 0,var(--g1) var(--s1,620px),var(--g2) var(--s2,980px),var(--g3) var(--s3,1300px),#fcfcfc var(--s4,1800px)) no-repeat,#fcfcfc}
+html:is([data-w="Parlor-Social-Club"],[data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) body::before{opacity:.1}
+/* the dark tops end where the hero ends (--hb, measured in render(), so it holds at every width): mid-tone under the tags, light under the text */
+html:is([data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]){--s1:var(--hb,780px);--s2:calc(var(--hb,780px) + 90px);--s3:calc(var(--hb,780px) + 380px);--s4:calc(var(--hb,780px) + 900px)}
+/* Parlor: mint #00d9a9 from works/Parlor-Social-Club/01.jpg; g1–g3 derived (mint mixed toward white). Light ground, so the ink stays dark;
+   accent #00604a derived (mint darkened) because the site blue goes muddy on mint */
+html[data-w="Parlor-Social-Club"]{--g0:#00d9a9;--g1:#3fe0b9;--g2:#a6eedb;--g3:#dff7f0}
+html[data-w="Parlor-Social-Club"] .top{background:color-mix(in srgb,#00d9a9 90%,transparent);--blue:#00604a;--line:rgba(0,0,0,.18)}
+html[data-w="Parlor-Social-Club"] .hero{--blue:#00604a;--mute:#1f4f44;--line:rgba(0,0,0,.2)}
+/* Good Toy: navy #010a58 from works/Good-Toy/02.jpg, logo blue #009cff from covers/Good-Toy.jpg (its obi colour); g1 #0a2c9a and g3 derived */
+html[data-w="Good-Toy"]{--g0:#010a58;--g1:#0a2c9a;--g2:#009cff;--g3:#cfe9ff;--dk:#010a58}
+/* Masthead: charcoal #232729 and grey #9ba1a4 from covers/Masthead-Magazine.jpg, slate #363d4f = its obi colour; g3 derived */
+html[data-w="Masthead-Magazine"]{--g0:#232729;--g1:#363d4f;--g2:#9ba1a4;--g3:#e3e5e6;--dk:#232729}
+/* Polychronic: the work is black and white. #070707 from works/Polychronic-and-Time-Ideology/02.jpg; #313131, #a1a1a1, #ededed from covers/Polychronic-and-Time-Ideology.jpg */
+html[data-w="Polychronic-and-Time-Ideology"]{--g0:#070707;--g1:#313131;--g2:#a1a1a1;--g3:#ededed;--dk:#070707}
+/* the three dark tops: white type in the header and hero, as on KlassiC */
+html:is([data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) .top{background:color-mix(in srgb,var(--dk) 88%,transparent);--ink:#fff;--ground:var(--dk);--blue:#c9d3e6;--line:rgba(255,255,255,.3);color:#fff}
+html:is([data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) .hero{color:#fff;--ink:#fff;--line:rgba(255,255,255,.35);--mute:rgba(255,255,255,.74);--blue:#c9d3e6;border-bottom-color:rgba(255,255,255,.55)}
+html:is([data-w="Good-Toy"],[data-w="Masthead-Magazine"],[data-w="Polychronic-and-Time-Ideology"]) .hero + .book .tags li{color:#fff;border-color:rgba(255,255,255,.65)}
+/* About Time — colours from the book covers (assets/works/About-Time-Travel-in-Time/01–04.jpg): #050809 black, white bold sans, #9aa3b5 halftone grey-blue */
+html.x-at{--ground:#050809;--ink:#f4f4f4;--line:#26292c;--mute:#8a8989;--blue:#9aa3b5;--blue-tint:#121519;color-scheme:dark}
+html.x-at body{background:#050809}
+
+.at{padding:clamp(28px,4vw,56px) 0;border-bottom:1px solid var(--line)}
+.at-books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,28px);perspective:1400px}
+.at-book{position:relative;display:flex;flex-direction:column;aspect-ratio:3/4;padding:clamp(16px,2vw,28px);background:#0b0d0f;border:1px solid var(--line);color:#fff;overflow:hidden;
+  transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s,filter .5s;opacity:.38;filter:grayscale(1);transform:translateY(10px) rotateY(0)}
+.at-book.on{opacity:1;filter:none;transform:translateY(-6px);border-color:#9aa3b5;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.at-book::before{content:"";position:absolute;inset:auto -10% -30% -10%;height:70%;pointer-events:none;opacity:.5;
+  background:radial-gradient(circle,#9aa3b5 1.4px,transparent 1.6px) 0 0/9px 9px;-webkit-mask:radial-gradient(ellipse at 50% 100%,#000 10%,transparent 70%);mask:radial-gradient(ellipse at 50% 100%,#000 10%,transparent 70%);transition:transform 1.2s ease}
+.at-book.on::before{transform:translateY(-8%)}
+.at-book header{display:flex;justify-content:space-between;gap:10px;font:700 clamp(14px,1.5vw,20px)/1.15 var(--f-ui);letter-spacing:-.01em}
+.at-book header span{font-weight:700;color:#9aa3b5}
+.at-book footer{margin-top:auto;font:700 13px var(--f-ui);color:#9aa3b5;position:relative}
+.at-page{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;font:400 clamp(14px,1.25vw,17px)/1.6 var(--f-ui)}
+.at-page p{margin:0;opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s}
+.at-page p.in{opacity:1;transform:none}
+.at-page .dash{color:#9aa3b5;margin-right:.4em}
+.at-jump{align-self:flex-start;display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid #9aa3b5;background:none;color:#9aa3b5;font:500 12px var(--f-ui);letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s}
+.at-jump:hover,.at-jump:focus-visible{background:#9aa3b5;color:#050809}
+.at-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:22px;font:500 13px var(--f-ui);color:var(--mute);font-variant-numeric:tabular-nums}
+.at-bar b{color:var(--ink)}
+.at-bar ol{display:flex;gap:4px;flex:1;max-width:520px;margin:0;padding:0;list-style:none}
+.at-bar li{flex:1;height:4px;background:var(--line);transition:background .3s}
+.at-bar li[data-v="1"]{background:#f4f4f4}.at-bar li[data-v="2"]{background:#9aa3b5}.at-bar li[data-v="3"]{background:#5c6577}
+@media (max-width:760px){.at-books{grid-template-columns:1fr}.at-book{aspect-ratio:auto;min-height:340px;display:none}.at-book.on{display:flex;transform:none}.at-bar{flex-wrap:wrap}.at-bar ol{order:3;flex-basis:100%;max-width:none}}
+@media (prefers-reduced-motion:reduce){.at-book,.at-page p{transition:none}}
+html.x-tv .xhero{border-bottom:0;padding-bottom:clamp(8px,1.5vw,20px)}
+html.x-tv .tv{padding-top:clamp(12px,2vw,28px)}
+.tv{padding:clamp(32px,5vw,72px) 0;border-bottom:1px solid var(--line);outline:none}
+.tv-set{display:flex;gap:clamp(16px,3vw,40px);align-items:stretch;justify-content:center;background:#17131a;border-radius:28px;padding:clamp(16px,2.4vw,32px);max-width:760px;margin:0 auto;box-shadow:inset 0 0 0 2px #2a2430,0 40px 80px -30px #000}
+.tv-screen{position:relative;width:min(56vw,380px);aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#000;box-shadow:inset 0 0 40px rgba(0,0,0,.9)}
+.tv-pic{all:unset;position:absolute;inset:0;cursor:pointer}
+.tv-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.tv-screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.55));z-index:3}
+.tv-screen iframe,.tv-screen .vm-out{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}
+.tv-screen .vm-out{display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;background:#22101b;color:var(--blue);font-size:14px}
+.tv-screen canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;opacity:0;transition:opacity .15s;z-index:4;pointer-events:none}
+.tv-osd{position:absolute;left:14px;top:14px;z-index:5;font:600 13px var(--f-ui);letter-spacing:.1em;color:#7dff6a;text-shadow:0 0 6px rgba(125,255,106,.8);opacity:0;pointer-events:none}
+.tv-osd.on{animation:osd 2.2s ease forwards}
+@keyframes osd{0%,70%{opacity:1}100%{opacity:0}}
+.tv-side{display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-width:150px}
+.tv-brand{margin:0;font-family:var(--f-display);font-weight:300;font-size:clamp(28px,3vw,44px);line-height:1;color:var(--blue)}
+.tv-brand small{display:block;font:500 11px var(--f-ui);letter-spacing:.2em;color:var(--mute);margin-top:6px}
+.tv-ch{display:flex;flex-direction:column;gap:8px}
+.tv-ch button{all:unset;box-sizing:border-box;cursor:pointer;padding:10px 12px;border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;color:var(--mute);transition:all .2s}
+.tv-ch button b{font:600 12px var(--f-ui);letter-spacing:.12em;color:var(--ink)}
+.tv-ch button span{font-size:12px}
+.tv-ch button:hover{border-color:var(--blue)}
+.tv-ch button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#2a0a1e}.tv-ch button[aria-pressed="true"] b{color:#000}
+.tv-ch button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.tv-dial{margin:0;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#2b2530 0 55%,#1d1820 56%);box-shadow:inset 0 0 0 2px #3a3240;position:relative;align-self:flex-start}
+.tv-dial i{position:absolute;left:50%;top:6px;width:3px;height:22px;margin-left:-1.5px;background:var(--blue);transform-origin:50% 26px;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+@media (max-width:760px){.tv-set{flex-direction:column;align-items:center;border-radius:20px}.tv-screen{width:min(78vw,340px)}.tv-side{width:100%;min-width:0}.tv-ch{flex-direction:row}.tv-ch button{flex:1}.tv-dial{display:none}}
+
+/* Virtual Temple — interactive five-element star */
+.penta{margin:0;background:#0a0605;border:1px solid var(--line);padding:clamp(16px,3vw,40px);display:grid;justify-items:center;gap:8px}
+.penta svg{width:min(100%,480px);height:auto;display:block;overflow:visible}
+.penta line{stroke:rgba(241,230,211,.35);stroke-width:1.2;transition:stroke .3s,stroke-width .3s}
+.penta line.on{stroke:var(--ink);stroke-width:2.2}
+.penta .pn-trace{fill:none;stroke:var(--blue);stroke-width:1.5;stroke-dasharray:60 1400;animation:pnTrace 6s linear infinite;opacity:.9}
+@keyframes pnTrace{to{stroke-dashoffset:-1460}}
+.pn-node{cursor:pointer;outline:none}
+.pn-node circle{fill:#0a0605;stroke:var(--ink);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.pn-node .pn-halo{fill:none;stroke:var(--c);stroke-width:1;opacity:0;transition:opacity .3s,r .4s}
+.pn-z{font-family:var(--f-ui);font-size:22px;fill:var(--ink);text-anchor:middle;pointer-events:none}
+.pn-e{font-family:var(--f-ui);font-size:15px;fill:var(--mute);text-anchor:middle;pointer-events:none;transition:fill .3s}
+.pn-node.on circle:not(.pn-halo){fill:var(--c);stroke:var(--c)}.pn-node.on .pn-z{fill:#110a08}.pn-node.on .pn-e{fill:var(--c)}
+.pn-node.on .pn-halo{opacity:1;animation:pnHalo 1.8s ease-out infinite}
+@keyframes pnHalo{from{r:26;opacity:.9}to{r:48;opacity:0}}
+.pn-node:focus-visible circle:not(.pn-halo){stroke:var(--c);stroke-width:3}
+.penta figcaption{text-align:center;display:flex;flex-direction:column;gap:2px;transition:color .3s}
+.penta figcaption b{font-family:var(--f-display);font-weight:300;font-size:clamp(22px,2.4vw,32px)}
+.penta figcaption span{font-size:13px;color:var(--mute)}
+@media (prefers-reduced-motion: reduce){.penta .pn-trace,.pn-node.on .pn-halo{animation:none}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <button type="button" class="btn back" id="rewind" aria-label="倒帶回唱片"><i></i><i></i><i></i><i></i><span class="rw" aria-hidden="true"><s></s><s></s></span>倒帶</button>
+  <div class="mast"><a class="name" href="index.html">Ryan Hsieh</a>
+    <nav><a href="index.html" aria-current="page">index</a><a href="play.html">play</a><a href="about.html">about</a></nav></div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<script src="assets/works-data.js"></script>
+<script src="assets/works-content.js"></script>
+<script src="assets/transition.js"></script>
+<script>
+const D=window.WORKS_DATA, N=D.length;
+const SIDE=D.map(w=>/客戶案|DTE/.test(w.context)?'A':'B');
+const sideNo=i=>SIDE[i]+SIDE.slice(0,i+1).filter(x=>x===SIDE[i]).length;
+const pad=n=>String(n).padStart(2,'0');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CD=true;   /* photo-cover toggle removed 2026-11-12 */
+if(CD)document.documentElement.classList.add('cd');
+const thumb=w=>CD?`assets/cd5/${w.slug}-sm.webp`:`assets/thumbs/${w.slug}.jpg`, cover=w=>CD?`assets/cd5/${w.slug}.webp`:`assets/covers/${w.slug}.jpg`;
+
+const CDX=['KlassiC','Parlor-Social-Club','Meier-Q','Good-Toy','Masthead-Magazine','Polychronic-and-Time-Ideology'];   /* pages with the layered, playable CD case */
+const C=window.WORKS_CONTENT||{};
+/* credit lines (Studio / Designer / Role …) are lifted out of the old page text into the hero list under 年份 */
+const CK=/^\s*→?\s*(Studio|Client|Designers?|Creative Director|Art Director|Role|Team ?work with|Device|Developer|Photographer|Director|Producer|Agency)\s*[:：→]\s*(.+)$/i;
+/* half-width space between CJK and Latin letters / digits inside paragraphs */
+const CJK='\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff';
+const pang=t=>t.replace(new RegExp(`([${CJK}])([A-Za-z0-9])`,'g'),'$1 $2').replace(new RegExp(`([A-Za-z0-9%])([${CJK}])`,'g'),'$1 $2');
+/* a blank line only where a paragraph switches between Chinese and English */
+const isZh=l=>new RegExp(`[${CJK}]`).test(l);
+const langLines=t=>t.split('\n').map(l=>l&&!isZh(l)&&/[A-Za-z]/.test(l)?`<span lang="en">${esc(l)}</span>`:esc(l)).join('\n');
+const gapLang=t=>{const L=t.split(/\n+/);return L.map((l,k)=>k&&isZh(l)!==isZh(L[k-1])?'\n'+l:l).join('\n');};
+/* info-table labels: all English (Ryan 2026-11-12), normalised from the old pages' credit lines */
+const LBL={studio:'Studio',client:'Client',designer:'Designer',designers:'Designers','creative director':'Creative Director','art director':'Art Director',role:'Role','team work with':'Collaborator',device:'Device',developer:'Developer',photographer:'Photographer',director:'Director',producer:'Producer',agency:'Agency'};
+function liftCredits(B){
+  const rows=[],add=(k,v)=>{k=k.replace(/^team ?work with$/i,'Team work with');const r=rows.find(r=>r[0].toLowerCase()===k.toLowerCase());
+    if(!r)rows.push([k,v]);else if(/^role$/i.test(k)){const have=r[1].split('、');v.split('、').forEach(x=>{if(!have.includes(x))have.push(x);});r[1]=have.join('、');}};
+  const out=[];
+  for(const b of B){
+    if(b.t!=='p'&&b.t!=='h'){out.push(b);continue;}
+    const keep=b.text.split('\n').filter(l=>{const m=l.match(CK);if(m&&!(/^role$/i.test(m[1])&&m[2].length>40)){add(m[1],m[2].trim());return false;}return true;});
+    if(keep.join('').trim())out.push({...b,text:keep.join('\n').replace(/^\n+|\n+$/g,'')});
+  }
+  return [rows,out];
+}
+function booklet(w,B){
+  if(!B||!B.length)return null;
+  let out=[],tags=[],firstP=true,fig=0,part=0,run=[],ncar=0;
+  const media=(b,cls)=>{fig++;return b.t==='video'
+    ?`<figure${cls}><video src="${esc(b.src)}" poster="${esc(b.poster)}" width="${b.w}" height="${b.h}" muted loop playsinline preload="none" aria-label="${esc(w.title)}，動態圖 ${fig}"></video></figure>`
+    :`<figure${cls}><img src="${esc(b.src)}" width="${b.w}" height="${b.h}" alt="${esc(w.title)}，圖 ${fig}" loading="lazy" decoding="async"></figure>`;};
+  /* 3+ images in a row on the old page become one horizontal carousel; 1–2 stay inline */
+  const flushRun=()=>{if(!run.length)return;
+    if(run.length<3)run.forEach(b=>out.push(media(b,b.t==='img'&&b.w<900?' class="narrow"':'')));
+    else{ncar++;const n=run.length;
+      out.push(`<div class="car" role="region" aria-roledescription="carousel" aria-label="${esc(w.title)} 圖輯 ${ncar}"><div class="car-track" tabindex="0">${run.map(b=>media(b,` class="slide" style="--r:${Math.max(b.w/b.h,.5).toFixed(3)}"`)).join('')}</div>
+        <div class="car-ctl"><span class="car-n"><b>01</b> / ${pad(n)}</span><span class="car-bar"><i></i></span><span class="car-btns"><button type="button" class="btn car-prev" aria-label="上一張"><i></i><i></i><i></i><i></i>←</button><button type="button" class="btn car-next" aria-label="下一張"><i></i><i></i><i></i><i></i>→</button></span></div></div>`);}
+    run=[];};
+  const flush=()=>{flushRun();if(tags.length){out.push(`<ul class="tags">${tags.map(tagChip).join('')}</ul>`);tags=[];}};
+  for(const b of B){
+    if(b.t==='img'||b.t==='video'){if(tags.length)flush();run.push(b);continue;}
+    if(b.t==='h'){flushRun();tags.push(...b.text.split(/\n|,\s*/).map(t=>t.replace(/^→\s*/,'').trim()).filter(Boolean));continue;}
+    flush();
+    if(b.t==='hr'){out.push('<hr class="cut">');continue;}
+    if(b.t==='sec'){const afterCut=out.length&&out[out.length-1]==='<hr class="cut">';if(afterCut)part++;out.push(`<h2 class="part${afterCut?'':' sub'}">${afterCut?`<span>Part ${pad(part+1)}</span>`:''}${esc(b.text)}</h2>`);firstP=afterCut;continue;}
+    if(b.t==='p'){out.push(`<p class="txt${firstP?' first':''}">${langLines(gapLang(b.text))}</p>`);firstP=false;}
+    else if(b.t==='vimeo'){const t=b.title||'Vimeo 影片';out.push(`<figure><button type="button" class="vm" data-id="${esc(b.id)}" style="${b.poster?`background-image:url('assets/works/_vimeo/${esc(b.id)}.jpg');`:''}${b.w&&b.h?`aspect-ratio:${b.w}/${b.h}`:''}" aria-label="播放：${esc(t)}"></button><figcaption>${esc(t)}${b.duration?` · ${Math.floor(b.duration/60)}:${pad(b.duration%60)}`:''} · <a href="https://vimeo.com/${esc(b.id)}" target="_blank" rel="noopener">Vimeo ↗</a></figcaption></figure>`);}
+    else if(b.t==='html'){out.push(b.html);}
+    else if(b.t==='cite'){out.push(`<p class="txt cite">${esc(b.pre)}<a href="${esc(b.href)}" target="_blank" rel="noopener">${esc(b.text)} ↗</a>${esc(b.post)}</p>`);}
+    else if(b.t==='link'){out.push(`<a class="lnk" href="${esc(b.href)}" target="_blank" rel="noopener">${esc(b.text.replace(/^→\s*/,''))} ↗</a>`);}
+  }
+  flush();
+  return `<section class="book"><div></div><div class="flow">${out.join('')}</div></section>`;
+}
+let io;
+function wire(){
+  io&&io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload='auto';reduce||v.play().catch(()=>{});}else v.pause();}),{rootMargin:'200px'});
+  document.querySelectorAll('.flow video').forEach(v=>{io.observe(v);if(reduce)v.controls=true;});
+  document.querySelectorAll('.car').forEach(car);
+  document.querySelectorAll('.flow .vm').forEach(b=>b.addEventListener('click',()=>{const f=document.createElement('iframe');
+    f.src=`https://player.vimeo.com/video/${b.dataset.id}?autoplay=1&dnt=1`;f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=b.getAttribute('aria-label').replace('播放：','');
+    if(b.style.aspectRatio)f.style.aspectRatio=b.style.aspectRatio;f.dataset.id=b.dataset.id;b.replaceWith(f);}));
+}
+/* carousel: native horizontal scroll with snap (trackpad / touch / shift-wheel), arrow buttons, ← → keys, mouse drag; click = full view */
+function car(c){
+  const t=c.querySelector('.car-track'),S=[...t.children],n=c.querySelector('.car-n b'),bar=c.querySelector('.car-bar i');
+  const at=()=>{let k=0,d=1e9;S.forEach((x,i)=>{const e=Math.abs(x.offsetLeft-t.offsetLeft-t.scrollLeft);if(e<d){d=e;k=i;}});
+    if(t.scrollLeft+t.clientWidth>=t.scrollWidth-4)k=S.length-1;return k;};
+  const go=k=>{k=(k+S.length)%S.length;t.scrollTo({left:S[k].offsetLeft-t.offsetLeft,behavior:reduce?'auto':'smooth'});};
+  const upd=()=>{const k=at();n.textContent=pad(k+1);const m=t.scrollWidth-t.clientWidth;bar.style.transform=`scaleX(${m>0?Math.max(.04,t.scrollLeft/m):1})`;
+    S.forEach((x,i)=>x.classList.toggle('on',i===k));};
+  t.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});upd();
+  c.querySelector('.car-prev').onclick=()=>go(at()-1);c.querySelector('.car-next').onclick=()=>go(at()+1);
+  t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(at()+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(at()-1);}});
+  let x0=null,s0=0,moved=0,pid=0;
+  t.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;x0=e.clientX;s0=t.scrollLeft;moved=0;pid=e.pointerId;});
+  t.addEventListener('pointermove',e=>{if(x0===null)return;moved=Math.max(moved,Math.abs(e.clientX-x0));if(moved>6&&!t.classList.contains('drag')){t.setPointerCapture(pid);t.classList.add('drag');}if(moved>6)t.scrollLeft=s0-(e.clientX-x0);});
+  const up=()=>{if(x0===null)return;x0=null;if(t.classList.contains('drag')){t.classList.remove('drag');go(at());}};
+  t.addEventListener('pointerup',up);t.addEventListener('pointercancel',up);
+  t.addEventListener('click',e=>{if(moved>6){e.preventDefault();e.stopPropagation();return;}const f=e.target.closest('.slide');if(f)lightbox(S,S.indexOf(f));},true);
+}
+const lb=document.createElement('dialog');lb.className='lb';lb.setAttribute('aria-label','看大圖');
+lb.innerHTML='<div class="lb-stage" id="lbStage"></div><div class="lb-bar"><span class="car-n" id="lbN"></span><span class="car-btns"><button type="button" class="btn" id="lbPrev" aria-label="上一張"><i></i><i></i><i></i><i></i>←</button><button type="button" class="btn" id="lbNext" aria-label="下一張"><i></i><i></i><i></i><i></i>→</button><button type="button" class="btn" id="lbClose"><i></i><i></i><i></i><i></i>關閉</button></span></div>';
+document.body.appendChild(lb);
+let LB=[],lbk=0;
+function lbShow(k){lbk=(k+LB.length)%LB.length;const m=LB[lbk].querySelector('img,video').cloneNode();m.removeAttribute('loading');m.removeAttribute('style');
+  if(m.tagName==='VIDEO'){m.autoplay=!reduce;m.controls=reduce;m.preload='auto';}
+  const st=document.getElementById('lbStage');st.replaceChildren(m);document.getElementById('lbN').innerHTML=`<b>${pad(lbk+1)}</b> / ${pad(LB.length)}`;}
+function lightbox(S,k){LB=S;lbShow(k);if(!lb.open)lb.showModal();}
+document.getElementById('lbPrev').onclick=()=>lbShow(lbk-1);document.getElementById('lbNext').onclick=()=>lbShow(lbk+1);
+document.getElementById('lbClose').onclick=()=>lb.close();
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.id==='lbStage')lb.close();});
+lb.addEventListener('keydown',e=>{if(e.key==='ArrowRight')lbShow(lbk+1);if(e.key==='ArrowLeft')lbShow(lbk-1);});
+/* if this host blocks the Vimeo player (e.g. a preview sandbox's frame policy), swap the frame for a link out */
+addEventListener('securitypolicyviolation',e=>{if(!/vimeo/.test(e.blockedURI||''))return;
+  document.querySelectorAll('.flow iframe,.tv-screen iframe,.mq-screen iframe').forEach(f=>{const a=document.createElement('a');a.className='vm-out';a.href=`https://vimeo.com/${f.dataset.id}`;a.target='_blank';a.rel='noopener';
+    a.textContent='這個預覽環境擋住了 Vimeo 播放器，按這裡到 Vimeo 觀看 ↗';f.replaceWith(a);});});
+/* bilingual title (e.g. 傑大好玩具 Good Toy): Chinese on one line, English on the next (Ryan 2026-11-12) */
+const titleHTML=t=>{const m=t.match(/^([\u3400-\u9fff\uff00-\uffef][^A-Za-z]*?)\s+([A-Za-z].*)$/);return m?`<span class="t-zh">${esc(m[1])}</span><span class="t-en">${esc(m[2])}</span>`:esc(t);};
+
+/* Photo Sphere layout: field units, 1 unit = viewport height / 1000. [image no., width, centre x, centre y, rotation] */
+const PS_LAYOUT=[[1,640,1500,1000,-2],[5,600,2150,820,3],[2,600,860,1180,2],[7,560,1180,420,-4],[11,600,1900,1520,-3],
+  [3,1100,2300,330,1.5],[6,1500,1450,1730,-1],[8,1000,700,1650,2],[9,1000,2450,1250,-2],[4,1050,650,560,3],[10,950,2600,1820,-1.5]];
+const psStamp=f=>{const m=(f||'').match(/(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})/);return m?[`${m[1]}.${m[2]}.${m[3]}`,`${m[4]}:${m[5]}:${m[6]}`]:['',''];};
+function psPage(w,i,blocks,credits){
+  const imgs=blocks.filter(b=>b.t==='img');
+  const tiles=PS_LAYOUT.filter(([n])=>imgs[n-1]).map(([n,wd,x,y,r])=>{const b=imgs[n-1],[d,t]=psStamp(b.file);
+    return `<figure style="--w:${wd};--rot:${r}deg;left:calc(${x}*var(--k));top:calc(${y}*var(--k))" data-n="${n}" data-d="${d}" data-t="${t}"><img src="${esc(b.src)}" width="${b.w}" height="${b.h}" alt="${esc(w.title)}，${d} ${t} 的環景拍攝畫面" draggable="false"></figure>`;}).join('');
+  const rest=booklet(w,blocks.filter(b=>b.t!=='img'&&b.t!=='video'))||'';
+  return `<section class="psf" id="psf" aria-label="Photo Sphere 環景拍攝畫面，可拖曳環顧">
+      <div class="field" id="psField">${tiles}</div>
+      <div class="vf" aria-hidden="true"></div>
+      <div class="hud" aria-live="polite"><span class="rec">CAPTURE <b id="psN">01</b> / ${pad(imgs.length)}</span><span class="stamp" id="psStamp"></span></div>
+      <div class="cap"><p class="kicker">Track ${pad(i+1)} / ${N} · Side ${sideNo(i)}</p><h1>${titleHTML(w.title)}</h1></div>
+      <p class="hint">移動滑鼠或拖曳，環顧四周 · 點圖看大圖</p>
+    </section>
+    <section class="pscred"><div></div><dl class="credits">${credits}</dl></section>
+    ${rest}`;
+}
+let psRAF=0;
+function psWire(){
+  cancelAnimationFrame(psRAF);const sec=document.getElementById('psf');if(!sec)return;
+  const field=document.getElementById('psField'),F=[...field.children],nEl=document.getElementById('psN'),st=document.getElementById('psStamp');
+  let k=1,cx=1500,cy=1000,tx=1500,ty=1000,drag=null,moved=0,last=-1,t0=performance.now(),idle=true;
+  const size=()=>{k=innerHeight/1000;sec.style.setProperty('--k',k+'px');};size();addEventListener('resize',size);
+  sec.addEventListener('pointermove',e=>{if(drag){tx=drag.cx-(e.clientX-drag.x)/k;ty=drag.cy-(e.clientY-drag.y)/k;moved=Math.max(moved,Math.hypot(e.clientX-drag.x,e.clientY-drag.y));return;}
+    if(e.pointerType!=='mouse')return;const r=sec.getBoundingClientRect();idle=false;tx=300+(e.clientX-r.left)/r.width*2600;ty=250+(e.clientY-r.top)/r.height*1600;});
+  sec.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,cx:tx,cy:ty};moved=0;idle=false;});
+  let idleT;const end=e=>{drag=null;if(e.pointerType!=='mouse'){clearTimeout(idleT);idleT=setTimeout(()=>{idle=true;t0=performance.now()-Math.acos(Math.max(-1,Math.min(1,(cx-1500)/520)))*9000;},2500);}};sec.addEventListener('pointerup',end);sec.addEventListener('pointercancel',end);sec.addEventListener('pointerleave',()=>{if(!drag)idle=true;});
+  sec.addEventListener('click',e=>{if(moved>6)return;const f=e.target.closest('figure');if(f)lightbox(F.slice().sort((a,b)=>a.dataset.n-b.dataset.n),F.slice().sort((a,b)=>a.dataset.n-b.dataset.n).indexOf(f));});
+  const tick=now=>{
+    if(idle&&!reduce){const a=(now-t0)/9000;tx=1500+Math.cos(a)*520;ty=1000+Math.sin(a*1.3)*260;}
+    tx=Math.min(3000,Math.max(200,tx));ty=Math.min(1950,Math.max(150,ty));
+    cx+=(tx-cx)*(reduce?1:.07);cy+=(ty-cy)*(reduce?1:.07);
+    const r=sec.getBoundingClientRect();field.style.transform=`translate3d(${r.width/2-cx*k}px,${r.height/2-cy*k}px,0)`;
+    if(r.bottom>0&&r.top<innerHeight){const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2),f=el&&el.closest&&el.closest('#psField figure');
+      const n=f?+f.dataset.n:-1;if(n!==last){last=n;F.forEach(x=>x.classList.toggle('hit',x===f));
+        if(f){nEl.textContent=pad(n);st.textContent=`${f.dataset.d}  ${f.dataset.t}`;}}}
+    psRAF=requestAnimationFrame(tick);};
+  psRAF=requestAnimationFrame(tick);
+}
+
+/* ---------- experimental pages ---------- */
+/* years confirmed by Ryan 2026-11-12 */
+const YEARS={'KlassiC':'2024','WTNC':'2024','Parlor-Social-Club':'2020','Meier-Q':'2024–2026','Masthead-Magazine':'2020','Bliss-Lau':'2020','Countdown':'2019','Polychronic-and-Time-Ideology':'2019','COEXIST':'2018','Wasting-Time-on-the-Internet':'2018','More-is-the-New-Normal':'2018','Crisis-in-New-York-Noise-Depression':'2018','Virtual-Temple':'2018','Eros-Obsess':'2018','Photo-Sphere':'2019','Good-Toy':'2021','About-Time-Travel-in-Time':'2019','Lost-in-Time':'2019'};
+const EXP={'Bliss-Lau':'bl','About-Time-Travel-in-Time':'at','Photo-Sphere':'ps','Lost-in-Time':'lit','Wasting-Time-on-the-Internet':'wt','More-is-the-New-Normal':'more','Countdown':'cd','Crisis-in-New-York-Noise-Depression':'noise','Virtual-Temple':'vt','COEXIST':'co','Eros-Obsess':'er','WTNC':'tv'};
+/* Countdown — the three city posters (poster_ny / poster_ldn / poster_tw on the old page) each count down to their own New Year */
+const CD_Z={'poster_ny.gif':['New York','紐約','America/New_York'],'poster_ldn.gif':['London','倫敦','Europe/London'],'poster_tw.gif':['Taipei','台北','Asia/Taipei']};
+function cdPage(w,i,B,cred){
+  const zv=B.filter(b=>b.t==='video'&&CD_Z[b.file]);
+  const cols=zv.map(b=>{const [en,zh,tz]=CD_Z[b.file];return `<div class="cd-col" data-tz="${tz}"><p class="cd-city">${en}<small>${zh}</small></p><p class="cd-now"><small>當地時間</small><span>--:--:--</span></p><p class="cd-left"><small>距離跨年</small><span>—</span></p><video src="${esc(b.src)}" poster="${esc(b.poster)}" width="${b.w}" height="${b.h}" muted loop playsinline autoplay aria-label="${esc(w.title)}，${en} 海報動態"></video></div>`;}).join('');
+  const rest=booklet(w,B.filter(b=>!zv.includes(b)))||'';
+  return heroX(w,i,`<p class="xhint">同一個時刻，三個時區各自倒數</p>`)+`<section class="cd-grid" aria-label="三個時區的倒數">${cols}</section>`+credSec(cred)+rest;
+}
+/* Crisis in New York — the faster you scroll, the louder the page gets */
+function noisePage(w,i,B,cred){
+  return `<canvas class="nz-cv" id="nzCv" width="240" height="150" aria-hidden="true"></canvas><div class="nz-meter" aria-hidden="true"><small>Noise</small><span id="nzBars">${'<i></i>'.repeat(12)}</span></div>`+
+    heroX(w,i,`<p class="xhint">捲動越快，城市越吵；停下來，才會安靜</p>`)+credSec(cred)+(booklet(w,B)||'');
+}
+/* Virtual Temple — tap to pray (ripples), move to let the incense smoke rise; the five elements from the work set the colour */
+const VT_EL=[['金','Gold','paper money','#e3ad4f'],['木','Wood','incense','#8fb873'],['水','Water','holy water','#6fb0e0'],['火','Fire','light','#ee6a43'],['土','Earth','yellow ash','#cfae74']];
+/* COEXIST — the site's own screens (Home / About / Buy / Experience / Explore / Install, from the old page's filenames), with a cloned consciousness that trails you */
+function coPage(w,i,B,cred){
+  const imgs=B.filter(b=>b.t==='img'),G={};imgs.forEach(b=>{const k=(b.file||'').replace(/(_\d+)?\.jpg$/i,'');(G[k]=G[k]||[]).push(b);});
+  const keys=Object.keys(G);
+  const tabs=keys.map((k,j)=>`<button type="button" data-k="${esc(k)}"${j?'':' aria-pressed="true"'}>${esc(k[0].toUpperCase()+k.slice(1))}</button>`).join('');
+  const data=esc(JSON.stringify(Object.fromEntries(keys.map(k=>[k,G[k].map(b=>b.src)]))));
+  const first=G[keys[0]][0].src;
+  return heroX(w,i,`<p class="xhint">移動游標，你的分身會跟上來；點上方分頁切換畫面</p>`)+
+   `<section class="co-win" id="coWin" data-g="${data}" aria-label="COEXIST 網站畫面"><div class="co-bar"><span class="co-dots"><i></i><i></i><i></i></span><nav class="co-tabs">${tabs}</nav><span class="co-n" id="coN">01 / ${pad(G[keys[0]].length)}</span></div>
+   <div class="co-screen" id="coScreen"><img class="co-real" id="coReal" src="${esc(first)}" width="1600" height="975" alt="${esc(w.title)} 網站畫面" draggable="false"><img class="co-clone" id="coClone" src="${esc(first)}" alt="" aria-hidden="true" draggable="false"><span class="co-ghost" id="coGhost" aria-hidden="true">CLONE</span>
+   <button type="button" class="co-step co-prev" aria-label="上一張">←</button><button type="button" class="co-step co-next" aria-label="下一張">→</button></div></section>`+
+   credSec(cred)+(booklet(w,B.filter(b=>b.t!=='img'))||'');
+}
+/* Eros Obsess — a jump rope you hold: move left and right to stalk through the film's timecode; stop, and the rope keeps turning */
+function erPage(w,i,B,cred){
+  const fr=B.filter(b=>b.t==='img'&&/^Comp-/.test(b.file||''));
+  const tc=f=>{const m=(f||'').match(/(\d+)-(\d+)-(\d+)-(\d+)\.jpg$/);return m?`${pad(+m[1])}:${m[2]}:${m[3]}:${m[4]}`:'';};
+  const data=esc(JSON.stringify(fr.map(b=>[b.src,tc(b.file)])));
+  return heroX(w,i,`<p class="xhint">左右移動，跟著時間走；停下來，繩子會自己繼續轉</p>`)+
+   `<section class="er-stage" id="erStage" data-f="${data}" aria-label="影片畫格：左右移動切換"><img id="erImg" src="${esc(fr[0].src)}" width="1000" height="563" alt="${esc(w.title)} 影片畫格" draggable="false">
+   <svg class="er-rope" id="erRope" viewBox="0 0 1000 563" preserveAspectRatio="none" aria-hidden="true"><path id="erPath" d=""/><circle id="erL" r="7"/><circle id="erR" r="7"/></svg>
+   <span class="er-tc" id="erTc">TC ${fr[0]?tc(fr[0].file):''}</span><span class="er-n" id="erN">01 / ${pad(fr.length)}</span></section>`+
+   credSec(cred)+(booklet(w,B.filter(b=>!fr.includes(b)))||'');
+}
+/* WTNC — the three vertical social videos (WTNC TV A / Japan / TV B, the Vimeo titles) as channels on one TV; changing channel goes through static */
+function tvPage(w,i,B,cred){
+  const V=B.filter(b=>b.t==='vimeo');
+  const chs=V.map((v,k)=>`<button type="button" data-k="${k}"${k?'':' aria-pressed="true"'}><b>CH ${pad(k+1)}</b><span>${esc(v.title||'')}</span></button>`).join('');
+  const data=esc(JSON.stringify(V.map(v=>[v.id,v.title||'',v.w,v.h])));
+  return heroX(w,i)+
+   `<section class="tv" id="tv" data-v="${data}" aria-label="WTNC 社群影片頻道"><div class="tv-set"><div class="tv-screen" id="tvScreen"><button type="button" class="tv-pic" id="tvPic" aria-label="播放"><img id="tvImg" src="assets/works/_vimeo/${esc(V[0].id)}.jpg" alt="" draggable="false"></button><canvas id="tvNoise" width="120" height="210" aria-hidden="true"></canvas><span class="tv-osd" id="tvOsd">CH 01</span></div>
+   <div class="tv-side"><p class="tv-brand">WTNC<small>TV</small></p><div class="tv-ch" role="group" aria-label="頻道">${chs}</div><p class="tv-dial" aria-hidden="true"><i id="tvDial"></i></p></div></div></section>`+
+   credSec(cred)+(booklet(w,B.filter(b=>b.t!=='vimeo'))||'');
+}
+/* the five-element pentagram from the old page's poster (Pro2_poster-4: 金 Mind, 木 Smoke, 水 Ripple, 火 Candle, 土 Dirt), rebuilt as an interactive star */
+const VT_P=[['金','Mind','paper money'],['木','Smoke','incense'],['水','Ripple','holy water'],['火','Candle','light'],['土','Dirt','yellow ash']];
+function pentaHTML(){
+  const P=VT_P.map((_,k)=>{const a=-Math.PI/2+k*2*Math.PI/5;return [200+130*Math.cos(a),205+130*Math.sin(a)];});
+  const lines=P.map((p,k)=>{const q=P[(k+2)%5];return `<line data-a="${k}" data-b="${(k+2)%5}" x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}"/>`;}).join('');
+  const star=[0,2,4,1,3,0].map(k=>P[k].map(v=>v.toFixed(1)).join(',')).join(' ');
+  const nodes=P.map((p,k)=>{const [z,e]=VT_P[k],lx=p[0],ly=p[1]+(k===0?-40:k===1||k===4?40:44);return `<g class="pn-node" data-k="${k}" tabindex="0" role="button" aria-label="${z} ${e}" style="--c:${VT_EL[k][3]}"><circle class="pn-halo" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="34"/><circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="24"/><text class="pn-z" x="${p[0].toFixed(1)}" y="${(p[1]+8).toFixed(1)}">${z}</text><text class="pn-e" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}">${e}</text></g>`;}).join('');
+  return `<figure class="penta" id="penta"><svg viewBox="0 0 400 420" aria-label="五元素五芒星：點元素看說明">${lines}<polyline class="pn-trace" points="${star}"/>${nodes}</svg><figcaption id="pentaCap"><b>金 · Mind</b><span>Gold — paper money</span></figcaption></figure>`;
+}
+function vtPage(w,i,B,cred){
+  B=B.map(b=>b.t==='img'&&b.file==='Pro2_poster-4-RGB.jpg'?{t:'html',html:pentaHTML()}:b);
+  return heroX(w,i)+`<section class="vt-stage" id="vtStage" aria-label="虛擬參拜：點一下產生漣漪，移動游標讓香煙上升"><canvas id="vtCv"></canvas><span class="xhint">點一下許願，漣漪會往外擴散；移動游標，香煙往上飄</span></section>`+
+    `<ul class="vt-el" aria-label="五元素">${VT_EL.map(([z,e,m,c],k)=>`<li><button type="button" data-k="${k}" style="--c:${c}"${k?'':' aria-pressed="true"'}><b>${z}</b><span>${e}</span><small>${m}</small></button></li>`).join('')}</ul>`+credSec(cred)+(booklet(w,B)||'');
+}
+/* About Time: the script is split across three books and every time-jump footnote sends you to another volume.
+   The fragments are Ryan's own project text from the old page, cut at sentence breaks and dealt across Vol.1–3. */
+function atPage(w,i,B,cred){
+  const p=B.find(b=>b.t==='p'),txt=p?p.text:'';
+  const fr=txt.split('\n').flatMap(l=>l.match(/[^。.]+[。.]?[”"]?/g)||[]).map(x=>x.trim()).filter(x=>x.length>1);
+  const vols=[1,2,3].map(v=>`<article class="at-book${v===1?' on':''}" data-v="${v}" aria-label="Vol.${v}"><header><b>About Time:<br>Travel in Time</b><span>#Vol.${v}</span></header><div class="at-page"></div><footer>Richard Curtis</footer></article>`).join('');
+  return heroX(w,i)+`<section class="at" id="at" data-fr="${esc(JSON.stringify(fr))}" aria-label="三本書互相跳轉的劇本">
+    <div class="at-books">${vols}</div>
+    <div class="at-bar"><span>第 <b id="atK">1</b> / ${fr.length} 段</span><ol id="atTrail" aria-label="閱讀路徑"></ol><span>跳躍 <b id="atJ">0</b> 次</span></div></section>`+
+    credSec(cred)+(booklet(w,B.filter(b=>b.t!=='p'))||'');
+}
+/* Bliss Lau: the homepage banner was a kaleidoscope of diamond facets, so the page is one. Sources = the five Vimeo stills
+   of the work (assets/works/_vimeo/4372…jpg); pointer moves the mirror, click / buttons change the number of facets. */
+function blPage(w,i,B,cred){
+  const V=B.filter(b=>b.t==='vimeo');
+  const src=V.map((v,k)=>`<button type="button" data-k="${k}"${k?'':' aria-pressed="true"'}><img src="assets/works/_vimeo/${esc(v.id)}.jpg" alt="" draggable="false"><span>${esc(v.title||'')}</span></button>`).join('');
+  return heroX(w,i)+`<section class="bl" id="bl" data-v="${esc(JSON.stringify(V.map(v=>v.id)))}" aria-label="萬花筒：移動游標轉動鏡面，點一下改變切面數">
+    <div class="bl-stage"><canvas id="blCv"></canvas><p class="bl-n"><b id="blN">8</b> facets</p></div>
+    <div class="bl-ctl"><div class="bl-src" role="group" aria-label="影像來源">${src}</div>
+    <div class="bl-seg" role="group" aria-label="切面數">${[6,8,12,16].map(n=>`<button type="button" data-n="${n}"${n===8?' aria-pressed="true"':''}>${n}</button>`).join('')}</div></div></section>`+
+    credSec(cred)+(booklet(w,B)||'');
+}
+/* Meier.Q: weekly brand films. The campaign cover sits in the dark and a spotlight follows the pointer (drifts on its own when idle);
+   the screen below plays the film. Colours sampled from covers/Meier-Q.jpg (#1b0c0e, #98654b, #683c2d). */
+function mqPage(w,i,B,cred){
+  const v=B.find(b=>b.t==='vimeo');
+  return heroX(w,i)+`<section class="mq" id="mq" aria-label="聚光燈：移動游標照亮畫面">
+    <div class="mq-stage" id="mqStage"><img class="mq-base" src="assets/covers/Meier-Q.jpg" alt="" draggable="false"><img class="mq-lit" src="assets/covers/Meier-Q.jpg" alt="Meier.Q 24 Winter Holiday 主視覺" draggable="false"><span class="mq-tag">24 WINTER HOLIDAY</span></div>
+    ${v?`<div class="mq-screen"><button type="button" class="vm mq-vm" data-id="${esc(v.id)}" aria-label="播放：${esc(v.title||'')}" style="aspect-ratio:${v.w}/${v.h}"><img src="assets/works/_vimeo/${esc(v.id)}.jpg" alt="" loading="lazy"><span class="mq-play">▶ ${esc(v.title||'')} · 0:${pad(+v.duration||0)}</span></button></div>`:''}
+  </section>`+credSec(cred)+(booklet(w,B.filter(b=>b.t!=='vimeo'))||'');
+}
+const credSec=c=>`<section class="xcred"><div></div><dl class="credits">${c}</dl></section>`;
+const heroX=(w,i,extra='')=>`<section class="xhero"><p class="kicker">Track ${pad(i+1)} / ${N} · Side ${sideNo(i)}</p><h1>${titleHTML(w.title)}</h1>${extra}</section>`;
+function litPage(w,i,B,cred){
+  const p=B.find(b=>b.t==='p'),lines=p?p.text.split('\n').map(l=>l.trim()).filter(Boolean):[];
+  const poem=lines.map(l=>/[㐀-鿿]/.test(l)?`<p class="zhl">${esc(l)}</p>`:`<p lang="en">${esc(l)}</p>`).join('');
+  const rolls=[];let cur=[];B.forEach(b=>{if(b.t==='hr'){if(cur.length)rolls.push(cur);cur=[];}else if(b.t==='img')cur.push(b);});if(cur.length)rolls.push(cur);
+  let k=0;const strips=rolls.map((r,ri)=>`<section class="roll"><h2>Roll ${pad(ri+1)} · ${r.length} frames</h2><div class="strip" tabindex="0" role="region" aria-label="Roll ${pad(ri+1)} 底片">${r.map((b,j)=>{k++;
+    return `<figure class="frame"><img src="${esc(b.src)}" width="${b.w}" height="${b.h}" alt="${esc(w.title)}，第 ${ri+1} 卷第 ${j+1} 張" loading="lazy" draggable="false"><figcaption>${pad(j+1)}A ▸</figcaption></figure>`;}).join('')}</div></section>`).join('');
+  const rest=booklet(w,B.filter(b=>b.t!=='img'&&b.t!=='video'&&b.t!=='p'&&b.t!=='hr'))||'';
+  return heroX(w,i,`<p class="lit-clock"><small>你已經在這裡迷失了</small><span id="litClock">00:00:00</span></p>`)+`<section class="lit-poem" aria-label="作品說明">${poem}</section>`+strips+credSec(cred)+rest;
+}
+function wtPage(w,i,B,cred){
+  const imgs=B.filter(b=>b.t==='img');
+  const P=[[6,8],[30,4],[52,14],[14,30],[40,26],[62,36],[8,52],[34,56],[56,62],[22,72]];
+  const wins=imgs.map((b,j)=>{const [x,y]=P[j%P.length];return `<figure class="win" style="left:${x}%;top:${y}%;z-index:${j+1}"><div class="tb"><span>wasting_time_${pad(j+1)}.jpg</span><i><span></span></i></div><img src="${esc(b.src)}" width="${b.w}" height="${b.h}" alt="${esc(w.title)}，影片截圖 ${j+1}" loading="lazy" draggable="false"></figure>`;}).join('');
+  const rest=booklet(w,B.filter(b=>b.t!=='img'&&b.t!=='video'))||'';
+  return `<div class="wt-bar"><span>你在這一頁已經花了 <b id="wtClock">00:00:00</b></span><span id="wtWin">${imgs.length} 個視窗</span></div>`+heroX(w,i,`<p class="xhint">拖曳視窗的標題列，點圖看大圖</p>`)+`<section class="wt-desk" id="wtDesk" aria-label="影片截圖">${wins}</section>`+credSec(cred)+rest;
+}
+function morePage(w,i,B,cred){
+  const p=B.find(b=>b.t==='p'),lines=p?p.text.split('\n').map(l=>l.trim()).filter(Boolean):[];
+  const imgs=B.filter(b=>b.t==='img');
+  const rest=booklet(w,B.filter(b=>b.t!=='img'&&b.t!=='video'&&b.t!=='p'))||'';
+  return heroX(w,i)+`<section class="more-poem" aria-label="作品說明">${lines.map(l=>`<p>${esc(l)}</p>`).join('')}</section>`+
+    `<section class="more-stage" id="moreStage" data-src='${esc(JSON.stringify(imgs.map(b=>b.src)))}' aria-label="海報：移動游標會複製更多"><span class="xhint">移動滑鼠或手指，複製更多</span><span class="count" id="moreN">×1</span></section>`+credSec(cred)+rest;
+}
+let xClock=0,xRAF=0;
+const hms=t=>{t=Math.floor(t/1000);return `${pad(Math.floor(t/3600))}:${pad(Math.floor(t/60)%60)}:${pad(t%60)}`;};
+function expWire(kind){
+  clearInterval(xClock);cancelAnimationFrame(xRAF);const t0=Date.now();
+  if(kind==='lit'){
+    const c=document.getElementById('litClock');xClock=setInterval(()=>c.textContent=hms(Date.now()-t0),1000);
+    const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}}),{rootMargin:'0px 0px -12% 0px'});
+    document.querySelectorAll('.lit-poem p').forEach(p=>io2.observe(p));
+    const F=[...document.querySelectorAll('.frame')];
+    const dev=()=>{const mx=innerWidth/2,my=innerHeight/2;F.forEach(f=>{const r=f.getBoundingClientRect();if(Math.abs(r.left+r.width/2-mx)<r.width*.9&&r.top<my+innerHeight*.35&&r.bottom>my-innerHeight*.35)f.classList.add('dev');});};
+    addEventListener('scroll',dev,{passive:true});document.querySelectorAll('.strip').forEach(s=>{s.addEventListener('scroll',dev,{passive:true});dragScroll(s);});dev();
+    F.forEach(f=>f.addEventListener('mouseenter',()=>f.classList.add('dev')));
+    document.querySelectorAll('.strip').forEach(s=>{const S=[...s.children];s.addEventListener('click',e=>{if(s.dataset.moved==='1')return;const f=e.target.closest('.frame');if(f){f.classList.add('dev');lightbox(S,S.indexOf(f));}});});
+  }
+  if(kind==='wt'){
+    const c=document.getElementById('wtClock');xClock=setInterval(()=>c.textContent=hms(Date.now()-t0),1000);
+    const desk=document.getElementById('wtDesk'),W=[...desk.children];let z=W.length+1;
+    const front=x=>{W.forEach(o=>o.classList.remove('top'));x.classList.add('top');x.style.zIndex=++z;};
+    W.forEach(win=>{const tb=win.querySelector('.tb');let d=null;
+      tb.addEventListener('pointerdown',e=>{front(win);const r=win.getBoundingClientRect(),R=desk.getBoundingClientRect();d={dx:e.clientX-r.left,dy:e.clientY-r.top,R};tb.setPointerCapture(e.pointerId);});
+      tb.addEventListener('pointermove',e=>{if(!d)return;win.style.left=(e.clientX-d.R.left-d.dx)+'px';win.style.top=(e.clientY-d.R.top-d.dy)+'px';});
+      tb.addEventListener('pointerup',()=>{d=null;win.classList.remove('glitch');void win.offsetWidth;win.classList.add('glitch');});
+      win.querySelector('img').addEventListener('click',()=>{front(win);lightbox(W,W.indexOf(win));});
+      win.addEventListener('pointerdown',()=>front(win));});
+    if(!reduce){const g=()=>{const x=W[Math.floor(Math.random()*W.length)];x.classList.remove('glitch');void x.offsetWidth;x.classList.add('glitch');xClock2=setTimeout(g,900+Math.random()*1800);};clearTimeout(xClock2);xClock2=setTimeout(g,1200);}
+  }
+  if(kind==='cd'){
+    const cols=[...document.querySelectorAll('.cd-col')];
+    const parts=(tz,d)=>{const o={};new Intl.DateTimeFormat('en-GB',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(d).forEach(p=>o[p.type]=+p.value||p.value);return o;};
+    const upd=()=>{const now=new Date();cols.forEach(c=>{const tz=c.dataset.tz,o=parts(tz,now),h=o.hour%24;
+      const off=Date.UTC(o.year,o.month-1,o.day,h,o.minute,o.second)-Math.floor(now/1000)*1000,tgt=Date.UTC(o.year+1,0,1)-off,left=Math.max(0,tgt-now);
+      c.querySelector('.cd-now span').textContent=`${pad(h)}:${pad(o.minute)}:${pad(o.second)}`;
+      c.querySelector('.cd-left span').textContent=`T− ${Math.floor(left/864e5)}d ${hms(left%864e5)}`;});};
+    upd();xClock=setInterval(upd,1000);
+  }
+  if(kind==='noise'){
+    const cv=document.getElementById('nzCv'),g=cv.getContext('2d'),bars=[...document.querySelectorAll('#nzBars i')],img=g.createImageData(cv.width,cv.height),F=[...document.querySelectorAll('.flow figure')];
+    let L=0,y0=scrollY;
+    const tick=()=>{const dy=Math.abs(scrollY-y0);y0=scrollY;const tgt=Math.min(1,dy/70);L+=(tgt-L)*(tgt>L?.3:.025);
+      if(L>.01){const d=img.data;for(let k=0;k<d.length;k+=4){const v=Math.random()*255;d[k]=d[k+1]=d[k+2]=v;d[k+3]=255;}g.putImageData(img,0,0);}
+      cv.style.opacity=(L*.5).toFixed(3);const n=Math.round(L*12);bars.forEach((b,k)=>b.classList.toggle('on',k<n));
+      if(!reduce)document.documentElement.style.setProperty('--jx',((Math.random()-.5)*L*10).toFixed(1)+'px');
+      xRAF=requestAnimationFrame(tick);};
+    xRAF=requestAnimationFrame(tick);
+  }
+  if(kind==='vt'){
+    const st=document.getElementById('vtStage'),cv=document.getElementById('vtCv'),g=cv.getContext('2d');let col=VT_EL[0][3],W=0,Hh=0,last=0;const rip=[],smk=[];
+    const size=()=>{const r=st.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;Hh=r.height;cv.width=W*d;cv.height=Hh*d;g.setTransform(d,0,0,d,0,0);};size();addEventListener('resize',size);
+    const pos=e=>{const r=st.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];};
+    st.addEventListener('pointerdown',e=>{const [x,y]=pos(e);rip.push({x,y,t:performance.now(),c:col});last=performance.now();});
+    st.addEventListener('pointermove',e=>{const [x,y]=pos(e);last=performance.now();if(smk.length<260)for(let k=0;k<2;k++)smk.push({x:x+(Math.random()-.5)*6,y,vx:(Math.random()-.5)*.25,vy:-.4-Math.random()*.5,a:1,r:6+Math.random()*8});});
+    document.querySelectorAll('.vt-el button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.vt-el button').forEach(o=>o.removeAttribute('aria-pressed'));b.setAttribute('aria-pressed','true');col=VT_EL[+b.dataset.k][3];
+      rip.push({x:W/2,y:Hh/2,t:performance.now(),c:col});}));
+    const hex=(c,a)=>{const n=parseInt(c.slice(1),16);return `rgba(${n>>16},${n>>8&255},${n&255},${a})`;};
+    const tick=now=>{g.clearRect(0,0,W,Hh);
+      if(now-last>3800&&!reduce){last=now;rip.push({x:W*(.25+Math.random()*.5),y:Hh*(.3+Math.random()*.4),t:now,c:col});}
+      if(!reduce&&Math.random()<.5&&smk.length<260)smk.push({x:W/2+(Math.random()-.5)*4,y:Hh-10,vx:(Math.random()-.5)*.2,vy:-.5-Math.random()*.4,a:.7,r:4+Math.random()*5});
+      for(let k=smk.length-1;k>=0;k--){const p=smk[k];p.x+=p.vx+Math.sin((now/900)+p.y/60)*.25;p.y+=p.vy;p.r+=.08;p.a-=.0045;if(p.a<=0){smk.splice(k,1);continue;}
+        const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);gr.addColorStop(0,`rgba(236,224,206,${(p.a*.16).toFixed(3)})`);gr.addColorStop(1,'rgba(236,224,206,0)');g.fillStyle=gr;g.beginPath();g.arc(p.x,p.y,p.r,0,7);g.fill();}
+      for(let k=rip.length-1;k>=0;k--){const r=rip[k],age=now-r.t;if(age>5200){rip.splice(k,1);continue;}
+        for(let j=0;j<4;j++){const rr=age*.11-j*26;if(rr<=0)continue;g.strokeStyle=hex(r.c,Math.max(0,(1-age/5200)*(1-j*.2)*.8));g.lineWidth=1.2;g.beginPath();g.arc(r.x,r.y,rr,0,7);g.stroke();}}
+      xRAF=requestAnimationFrame(tick);};
+    rip.push({x:W/2,y:Hh/2,t:performance.now(),c:col});xRAF=requestAnimationFrame(tick);
+    const pe=document.getElementById('penta');
+    if(pe){const N=[...pe.querySelectorAll('.pn-node')],L=[...pe.querySelectorAll('line')],cap=document.getElementById('pentaCap'),EN=['Gold','Wood','Water','Fire','Earth'];
+      const pick=k=>{N.forEach((n,j)=>n.classList.toggle('on',j===k));L.forEach(l=>l.classList.toggle('on',+l.dataset.a===k||+l.dataset.b===k));pe.classList.add('sel');
+        cap.innerHTML=`<b>${VT_P[k][0]} · ${VT_P[k][1]}</b><span>${EN[k]} — ${VT_P[k][2]}</span>`;cap.style.color=VT_EL[k][3];col=VT_EL[k][3];
+        document.querySelectorAll('.vt-el button').forEach((o,j)=>o.toggleAttribute('aria-pressed',j===k));};
+      N.forEach((n,k)=>{n.addEventListener('click',()=>pick(k));n.addEventListener('mouseenter',()=>pick(k));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(k);}});});
+      pick(0);}
+  }
+  if(kind==='co'){
+    const win=document.getElementById('coWin'),G=JSON.parse(win.dataset.g),sc=document.getElementById('coScreen'),real=document.getElementById('coReal'),cl=document.getElementById('coClone'),gh=document.getElementById('coGhost'),nEl=document.getElementById('coN');
+    let k=Object.keys(G)[0],j=0;const show=()=>{const L=G[k];j=(j+L.length)%L.length;real.src=cl.src=L[j];nEl.textContent=`${pad(j+1)} / ${pad(L.length)}`;};
+    win.querySelectorAll('.co-tabs button').forEach(b=>b.addEventListener('click',()=>{win.querySelectorAll('.co-tabs button').forEach(o=>o.removeAttribute('aria-pressed'));b.setAttribute('aria-pressed','true');k=b.dataset.k;j=0;show();}));
+    win.querySelector('.co-prev').onclick=()=>{j--;show();};win.querySelector('.co-next').onclick=()=>{j++;show();};
+    real.addEventListener('click',()=>{j++;show();});
+    let tx=.5,ty=.5,x=.5,y=.5,on=false;
+    sc.addEventListener('pointermove',e=>{const r=sc.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;on=true;});
+    sc.addEventListener('pointerleave',()=>{on=false;});
+    const tick=now=>{if(!on&&!reduce){tx=.5+Math.cos(now/2600)*.3;ty=.5+Math.sin(now/1900)*.25;}
+      const e=reduce?1:.06;x+=(tx-x)*e;y+=(ty-y)*e;const r=sc.getBoundingClientRect();
+      gh.style.transform=`translate(${x*r.width}px,${y*r.height}px)`;cl.style.transform=`translate(${(x-.5)*-36}px,${(y-.5)*-24}px)`;
+      xRAF=requestAnimationFrame(tick);};xRAF=requestAnimationFrame(tick);
+  }
+  if(kind==='er'){
+    const st=document.getElementById('erStage'),F=JSON.parse(st.dataset.f),im=document.getElementById('erImg'),path=document.getElementById('erPath'),tcEl=document.getElementById('erTc'),nEl=document.getElementById('erN'),L=document.getElementById('erL'),Rr=document.getElementById('erR');
+    F.forEach(([src])=>{const p=new Image();p.src=src;});
+    let cur=0,px=500,py=300,vx=0,vy=0,tx=500,ty=300,last=0;
+    const set=n=>{n=Math.max(0,Math.min(F.length-1,n));if(n===cur)return;cur=n;im.src=F[n][0];tcEl.textContent='TC '+F[n][1];nEl.textContent=`${pad(n+1)} / ${pad(F.length)}`;};
+    st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=(e.clientY-r.top)/r.height;tx=160+fx*680;ty=fy*563;last=performance.now();set(Math.floor(fx*F.length));});
+    const ay=563*.42;L.setAttribute('cx',24);L.setAttribute('cy',ay);Rr.setAttribute('cx',976);Rr.setAttribute('cy',ay);
+    const tick=now=>{if(now-last>1400&&!reduce){const a=now/520;tx=500+Math.cos(a)*60;ty=ay+Math.sin(a)*240;}
+      vx+=(tx-px)*.08;vy+=(ty-py)*.08;vx*=.82;vy*=.82;px+=vx;py+=vy;
+      path.setAttribute('d',`M24 ${ay} Q ${2*px-500} ${2*py-ay} 976 ${ay}`);xRAF=requestAnimationFrame(tick);};
+    xRAF=requestAnimationFrame(tick);
+  }
+  if(kind==='at'){
+    const root=document.getElementById('at'),fr=JSON.parse(root.dataset.fr||'[]'),bk=[...root.querySelectorAll('.at-book')],K=document.getElementById('atK'),J=document.getElementById('atJ'),T=document.getElementById('atTrail');
+    T.innerHTML=fr.map(()=>'<li></li>').join('');let k=0,jumps=0;
+    const cjk=t=>/[㐀-鿿]/.test(t);
+    const show=n=>{k=n;const v=n%3,b=bk[v];bk.forEach((x,j)=>x.classList.toggle('on',j===v));
+      const last=n===fr.length-1,nv=(n+1)%3+1;
+      b.querySelector('.at-page').innerHTML=`<p class="${cjk(fr[n])?'zh':''}"><span class="dash">—</span>${esc(fr[n])}</p>`+
+        (last?`<button type="button" class="at-jump" data-go="0">↺ 回到 Vol.1 重讀</button>`:`<button type="button" class="at-jump" data-go="${n+1}">↳ 時空跳躍，請翻至 Vol.${nv}</button>`);
+      requestAnimationFrame(()=>b.querySelector('.at-page p').classList.add('in'));
+      K.textContent=n+1;T.children[n].dataset.v=v+1;if(n===0)[...T.children].slice(1).forEach(li=>delete li.dataset.v);};
+    root.addEventListener('click',e=>{const g=e.target.closest('.at-jump');if(g){jumps++;J.textContent=jumps;show(+g.dataset.go);bk[k%3].querySelector('.at-jump')?.focus({preventScroll:true});return;}
+      const b=e.target.closest('.at-book');if(b&&!b.classList.contains('on')){b.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}],{duration:240});}});
+    show(0);
+  }
+  if(kind==='bl'){
+    const root=document.getElementById('bl'),ids=JSON.parse(root.dataset.v),cv=document.getElementById('blCv'),g=cv.getContext('2d'),st=cv.parentElement,nEl=document.getElementById('blN');
+    let n=8,img=new Image(),mx=.5,my=.5,tx=.5,ty=.5;img.src=`assets/works/_vimeo/${ids[0]}.jpg`;
+    const fit=()=>{const r=st.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);};fit();
+    const ro=new ResizeObserver(fit);ro.observe(st);
+    st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;});
+    const setN=v=>{n=v;nEl.textContent=n;root.querySelectorAll('.bl-seg button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.n===n?'true':'false'));};
+    st.addEventListener('click',()=>{const L=[6,8,12,16];setN(L[(L.indexOf(n)+1)%L.length]);});
+    root.querySelectorAll('.bl-seg button').forEach(b=>b.addEventListener('click',()=>setN(+b.dataset.n)));
+    root.querySelectorAll('.bl-src button').forEach(b=>b.addEventListener('click',()=>{img=new Image();img.src=`assets/works/_vimeo/${ids[+b.dataset.k]}.jpg`;
+      root.querySelectorAll('.bl-src button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+    const draw=t=>{const W=cv.width,H=cv.height,R=Math.hypot(W,H)/2,a=2*Math.PI/n;mx+=(tx-mx)*.06;my+=(ty-my)*.06;
+      g.fillStyle='#0f1212';g.fillRect(0,0,W,H);
+      if(img.complete&&img.naturalWidth){const rot=(reduce?0:t*0.00006)+(mx-.5)*1.6,iw=img.naturalWidth,ih=img.naturalHeight,s=R*1.5/Math.min(iw,ih);
+        for(let k=0;k<n;k++){g.save();g.translate(W/2,H/2);g.rotate((k%2?k+1:k)*a);if(k%2)g.scale(1,-1);
+          g.beginPath();g.moveTo(0,0);g.lineTo(R,0);g.lineTo(R*Math.cos(a),R*Math.sin(a));g.closePath();g.clip();
+          g.rotate(rot);g.drawImage(img,-iw*s*(.2+mx*.6),-ih*s*(.2+my*.6),iw*s,ih*s);g.restore();}
+        const gr=g.createRadialGradient(W/2,H/2,0,W/2,H/2,W/2);gr.addColorStop(.7,'rgba(15,18,18,0)');gr.addColorStop(1,'rgba(15,18,18,.55)');g.fillStyle=gr;g.fillRect(0,0,W,H);}
+      xRAF=requestAnimationFrame(draw);};
+    xRAF=requestAnimationFrame(draw);
+  }
+  if(kind==='mq'){
+    const st=document.getElementById('mqStage');let tx=50,ty=42,x=50,y=42,last=0,r=22,tr=22;
+    st.addEventListener('pointermove',e=>{const b=st.getBoundingClientRect();tx=(e.clientX-b.left)/b.width*100;ty=(e.clientY-b.top)/b.height*100;last=performance.now();});
+    st.addEventListener('pointerdown',()=>{tr=tr>40?22:70;});
+    const tick=t=>{if(t-last>1600&&!reduce){tx=50+28*Math.sin(t*.00042);ty=44+18*Math.sin(t*.00067);}
+      x+=(tx-x)*.08;y+=(ty-y)*.08;r+=(tr-r)*.08;st.style.setProperty('--mx',x.toFixed(2)+'%');st.style.setProperty('--my',y.toFixed(2)+'%');st.style.setProperty('--r',r.toFixed(2)+'%');
+      xRAF=requestAnimationFrame(tick);};
+    xRAF=requestAnimationFrame(tick);
+    const vb=document.querySelector('.mq-vm');vb&&vb.addEventListener('click',()=>{const f=document.createElement('iframe');f.src=`https://player.vimeo.com/video/${vb.dataset.id}?autoplay=1&dnt=1`;f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=vb.getAttribute('aria-label').replace('播放：','');f.dataset.id=vb.dataset.id;vb.replaceWith(f);});
+  }
+  if(kind==='tv'){
+    const tv=document.getElementById('tv'),V=JSON.parse(tv.dataset.v),scr=document.getElementById('tvScreen'),img=document.getElementById('tvImg'),cv=document.getElementById('tvNoise'),g=cv.getContext('2d'),osd=document.getElementById('tvOsd'),dial=document.getElementById('tvDial'),B=[...tv.querySelectorAll('.tv-ch button')];
+    let cur=0,until=0;const id=g.createImageData(cv.width,cv.height);
+    const noise=()=>{const d=id.data;for(let k=0;k<d.length;k+=4){const v=Math.random()*255;d[k]=d[k+1]=d[k+2]=v;d[k+3]=255;}g.putImageData(id,0,0);};
+    const tune=k=>{k=(k+V.length)%V.length;cur=k;B.forEach((b,j)=>b.setAttribute('aria-pressed',j===k?'true':'false'));dial.style.transform=`rotate(${k*60-60}deg)`;
+      const f=scr.querySelector('iframe,.vm-out');if(f){f.remove();document.getElementById('tvPic').hidden=false;}
+      until=performance.now()+(reduce?0:380);cv.style.opacity=1;osd.textContent=`CH ${pad(k+1)}  ${V[k][1]}`;osd.classList.remove('on');void osd.offsetWidth;osd.classList.add('on');
+      setTimeout(()=>{img.src=`assets/works/_vimeo/${V[k][0]}.jpg`;},reduce?0:160);};
+    B.forEach((b,k)=>b.addEventListener('click',()=>tune(k)));
+    tv.addEventListener('keydown',e=>{if(/^[1-9]$/.test(e.key)&&+e.key<=V.length){tune(+e.key-1);}if(e.key==='ArrowUp'){e.preventDefault();tune(cur-1);}if(e.key==='ArrowDown'){e.preventDefault();tune(cur+1);}});
+    tv.tabIndex=-1;
+    document.getElementById('tvPic').addEventListener('click',e=>{const [vid,t]=V[cur],f=document.createElement('iframe');f.src=`https://player.vimeo.com/video/${vid}?autoplay=1&dnt=1`;f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=t;f.dataset.id=vid;e.currentTarget.hidden=true;scr.appendChild(f);});
+    const tick=now=>{if(now<until){noise();}else if(cv.style.opacity!=='0'){cv.style.opacity=0;}xRAF=requestAnimationFrame(tick);};
+    tune(0);xRAF=requestAnimationFrame(tick);
+  }
+  if(kind==='more'){
+    const st=document.getElementById('moreStage'),src=JSON.parse(st.dataset.src||'[]'),nEl=document.getElementById('moreN');if(!src.length)return;
+    let n=0,lx=-99,ly=-99;const live=[];
+    const add=(x,y)=>{const im=new Image();im.src=src[n%src.length];im.className='clone';im.alt='';im.style.left=x+'px';im.style.top=y+'px';im.style.zIndex=n+1;st.appendChild(im);live.push(im);n++;nEl.textContent='×'+n;
+      if(live.length>60){const o=live.shift();o.style.opacity=0;setTimeout(()=>o.remove(),2400);}};
+    const r0=st.getBoundingClientRect();add(r0.width/2,r0.height/2);
+    st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(Math.hypot(x-lx,y-ly)<(reduce?120:38))return;lx=x;ly=y;add(x,y);});
+  }
+}
+let xClock2=0;
+function dragScroll(t){let x0=null,s0=0;t.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;x0=e.clientX;s0=t.scrollLeft;t.dataset.moved='0';});
+  t.addEventListener('pointermove',e=>{if(x0===null)return;if(Math.abs(e.clientX-x0)>6){t.dataset.moved='1';t.scrollLeft=s0-(e.clientX-x0);}});
+  const up=()=>{x0=null;setTimeout(()=>t.dataset.moved='0',0);};t.addEventListener('pointerup',up);t.addEventListener('pointerleave',up);}
+const pnHTML=(i,prev,next)=>`<nav class="pn" aria-label="上一首／下一首">
+    <a href="#${prev.slug}"><img src="${thumb(prev)}" alt=""><div><small>上一首 · ${pad((i-1+N)%N+1)}</small><span>${esc(prev.title)}</span></div></a>
+    <a class="next" href="#${next.slug}"><div><small>下一首 · ${pad((i+1)%N+1)}</small><span>${esc(next.title)}</span></div><img src="${thumb(next)}" alt=""></a>
+  </nav>`;
+/* ---------- tags: every discipline tag on a work page links to a list of all works carrying it (Ryan 2026-11-12).
+   Tags come from the "h" blocks of works-content.js (the old pages' →tag lines). Lines that name a site, a device, a camera,
+   a collaborator or a Masthead issue are not disciplines, so they stay plain text. URL: work.html#tag/motion-design ---------- */
+const NOTAG=/:|\.com$|^shot on\b/i;
+const tagKey=t=>t.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const TAGS=(()=>{const m=new Map();D.forEach(w=>(C[w.slug]||[]).filter(b=>b.t==='h').forEach(b=>b.text.split(/\n|,\s*/).map(t=>t.replace(/^→\s*/,'').trim()).filter(t=>t&&!NOTAG.test(t)).forEach(t=>{
+  const k=tagKey(t);if(!m.has(k))m.set(k,{label:t,works:[]});const e=m.get(k);if(!e.works.includes(w.slug))e.works.push(w.slug);})));return m;})();
+const tagChip=t=>{const k=tagKey(t);return TAGS.has(k)?`<li><a href="#tag/${k}">${esc(t)}</a></li>`:`<li class="plain">${esc(t)}</li>`;};
+function renderTag(k){
+  const T=TAGS.get(k)||TAGS.get('motion-design'),H=document.documentElement;k=tagKey(T.label);
+  cdxStop&&cdxStop();
+  H.classList.remove('ps','exp','x-lit','x-wt','x-more','x-cd','x-noise','x-vt','x-co','x-er','x-tv','x-at','x-mq','x-bl');H.dataset.w='tag';
+  document.title=`${T.label} — Ryan Hsieh`;
+  const rows=T.works.map(sl=>{const i=D.findIndex(w=>w.slug===sl),w=D[i];
+    return `<li><a href="#${esc(sl)}"><span class="n">${pad(i+1)}</span><img src="${thumb(w)}" alt="" loading="lazy" decoding="async"><span class="t">${titleHTML(w.title)}</span><span class="u">Side ${sideNo(i)} · ${esc(YEARS[sl]||'—')}</span></a></li>`;}).join('');
+  const cloud=[...TAGS.entries()].sort((a,b)=>b[1].works.length-a[1].works.length||a[1].label.localeCompare(b[1].label))
+    .map(([kk,e])=>`<li${kk===k?' class="on"':''}><a href="#tag/${kk}"${kk===k?' aria-current="page"':''}>${esc(e.label)}<small>${e.works.length}</small></a></li>`).join('');
+  document.getElementById('main').innerHTML=`
+  <section class="hero tagv"><div>
+    <p class="kicker">Tag · ${T.works.length} ${T.works.length>1?'works':'work'}</p>
+    <h1 lang="en">${esc(T.label)}</h1>
+  </div></section>
+  <section class="sec"><h2>Tracklist</h2><ol class="tl tagl">${rows}</ol></section>
+  <section class="sec"><h2>All tags</h2><ul class="tags tagc" lang="en">${cloud}</ul></section>`;
+  document.body.classList.remove('ready');requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('ready')));
+  scrollTo(0,0);heroEnd();
+}
+function render(){
+  {const h=decodeURIComponent(location.hash.slice(1));if(h.startsWith('tag/'))return renderTag(h.slice(4));}
+  let i=D.findIndex(w=>w.slug===decodeURIComponent(location.hash.slice(1)));
+  if(i<0)i=D.findIndex(w=>w.slug==='Parlor-Social-Club');
+  const w=D[i], prev=D[(i-1+N)%N], next=D[(i+1)%N];
+  document.title=`${w.title} — Ryan Hsieh`;
+  const credits=(C[w.slug]?[['Context',w.context]]:(w.credits||[['Context',w.context]])).map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const vids=w.vimeo.map((u,k)=>`<li><a href="${esc(u)}" target="_blank" rel="noopener"><span class="n">${pad(k+1)}</span><span class="p"></span><span class="t">影片 ${k+1}</span><span class="u">${esc(u.replace('https://',''))} ↗</span></a></li>`);
+  const links=w.links.map((l,k)=>`<li><a href="${esc(l.href)}" target="_blank" rel="noopener"><span class="n">${pad(w.vimeo.length+k+1)}</span><span></span><span class="t">${esc(l.text)}</span><span class="u">↗</span></a></li>`);
+  const gal=w.gallery?w.gallery.map((g,k)=>`<figure><figcaption>fig. ${pad(k+1)} — ${esc(g.cap)}</figcaption><img src="${esc(g.src)}" alt="${esc(w.title)}，${esc(g.cap)}" loading="lazy"></figure>`).join('')
+    :'';
+  let [lifted,blocks]=C[w.slug]?liftCredits(C[w.slug]):[[],null];
+  if(blocks)blocks=blocks.map(b=>b.t==='p'?{...b,text:pang(b.text)}:b);
+  const book=booklet(w,blocks);
+  const more=lifted.filter(([k,v])=>v!==w.context).map(([k,v])=>`<div><dt>${esc(LBL[k.toLowerCase()]||k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const X=blocks&&EXP[w.slug],PS=X==='ps',H=document.documentElement;
+  H.classList.remove('ps','exp','x-lit','x-wt','x-more','x-cd','x-noise','x-vt','x-co','x-er','x-tv','x-at','x-mq','x-bl');H.dataset.w=w.slug;if(X){H.classList.add('exp',X==='ps'?'ps':'x-'+X);}
+  const allCred=`${credits}<div><dt>Category</dt><dd>${w.tags.map(esc).join(' · ')}</dd></div><div><dt>Year</dt><dd>${esc(YEARS[w.slug]||'—')}</dd></div>${more}`;
+  const XP={ps:psPage,lit:litPage,wt:wtPage,more:morePage,cd:cdPage,noise:noisePage,vt:vtPage,co:coPage,er:erPage,tv:tvPage,at:atPage,mq:mqPage,bl:blPage}[X];
+  document.getElementById('main').innerHTML=XP?XP(w,i,blocks,allCred)+pnHTML(i,prev,next):`
+  <section class="hero">
+    ${CDX.includes(w.slug)?`<div class="sleeve cx" tabindex="0" role="group" aria-label="${esc(w.title)} CD：拖曳或用左右方向鍵轉動光碟"><div class="cx-in"><img class="cx-b" src="assets/cdx/${w.slug}-base.webp" alt="${esc(w.title)} 封面"><img class="cx-d" src="assets/cdx/${w.slug}-disc.webp" alt=""><img class="cx-t" src="assets/cdx/${w.slug}-top.webp" alt=""></div></div>`
+    :`<div class="sleeve" style="--img:url('${thumb(w)}')"><span class="disc"><b></b><i></i></span><img src="${cover(w)}" alt="${esc(w.title)} 封面"></div>`}
+    <div>
+      <p class="kicker">Track ${pad(i+1)} / ${N} · Side ${sideNo(i)}</p>
+      <h1>${titleHTML(w.title)}</h1>
+      <dl class="credits">${credits}
+        <div><dt>Category</dt><dd>${w.tags.map(esc).join(' · ')}</dd></div>
+        <div><dt>Year</dt><dd>${esc(YEARS[w.slug]||'—')}</dd></div>${more}
+      </dl>
+    </div>
+  </section>
+  ${book||`<section class="sec"><h2>Liner notes</h2><p class="notes">${esc(w.summary)}</p></section>
+  ${vids.length+links.length?`<section class="sec"><h2>Tracklist</h2><ol class="tl">${vids.join('')}${links.join('')}</ol></section>`:''}
+  <section class="gal" aria-label="作品圖">${gal}</section>`}
+  ${pnHTML(i,prev,next)}`;
+  document.body.classList.remove('ready');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('ready')));
+  scrollTo(0,0);
+  wire();psWire();expWire(X);cdxWire();heroEnd();
+  /* English-only text gets lang="en" so screen readers and hyphenation switch language (page is zh-Hant) */
+  document.querySelectorAll('#main :is(p,li,h2,h3,figcaption,dd,blockquote,span.t)').forEach(e=>{if(e.closest('[lang]:not(html)')||isZh(e.textContent)||!/[A-Za-z]{3}/.test(e.textContent))return;e.lang='en';});
+}
+addEventListener('hashchange',render);
+/* playable CD case: angle a (deg), speed v (deg/frame at 60fps). Hover eases v toward a slow turn, a drag sets the angle
+   directly from the pointer's angle around the hub, release keeps the flick and friction slows it; the rewind spins it back */
+/* where the hero ends, for the gradient grounds */
+function heroEnd(){const h=document.querySelector('#main > .hero');const H=document.documentElement;
+  if(h)H.style.setProperty('--hb',Math.round(h.getBoundingClientRect().bottom+scrollY)+'px');else H.style.removeProperty('--hb');}
+addEventListener('resize',()=>requestAnimationFrame(heroEnd));
+let cdxStop=null;addEventListener('rh-shown',()=>window.__shown=true);
+function cdxWire(){
+  cdxStop&&cdxStop();cdxStop=null;
+  const el=document.querySelector('.sleeve.cx');if(!el)return;
+  const d=el.querySelector('.cx-d');let a=0,v=reduce?0:14,hov=false,drag=null,raf=0,last=0,alive=true;
+  const SLOW=1.1;   // ≈ 11 rpm under the pointer
+  const ctr=()=>{const r=el.querySelector('.cx-b').getBoundingClientRect();return [r.left+r.width*.51116,r.top+r.height*.49522,r];};
+  const ang=e=>{const [x,y]=ctr();return Math.atan2(e.clientY-y,e.clientX-x)*180/Math.PI;};
+  const tick=t=>{if(!alive)return;const k=last?Math.min(3,(t-last)/16.67):1;last=t;
+    if(document.body.classList.contains('rewinding'))v=-28;
+    else if(!drag){const goal=hov&&!reduce?SLOW:0;v+=(goal-v)*(Math.abs(v)>SLOW*1.5?.025:.04)*k;}
+    a=(a+v*k)%360;d.style.transform=`rotate(${a}deg)`;
+    if(drag||Math.abs(v)>.01||hov)raf=requestAnimationFrame(tick);else{raf=0;last=0;}};
+  const run=()=>{if(!raf){last=0;raf=requestAnimationFrame(tick);}};
+  const tilt=e=>{if(reduce||e.pointerType!=='mouse')return;const [,,r]=ctr();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.setProperty('--ry',(x*9).toFixed(2)+'deg');el.style.setProperty('--rx',(-y*7).toFixed(2)+'deg');};
+  el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hov=true;el.classList.add('live');run();}});
+  el.addEventListener('pointerleave',e=>{hov=false;el.classList.remove('live');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');run();});
+  el.addEventListener('pointerdown',e=>{if(e.button)return;const [x,y,r]=ctr();const dx=e.clientX-x,dy=e.clientY-y;
+    if(Math.hypot(dx,dy)>r.width*.47)return;   // grab only on the disc, so a page swipe elsewhere still scrolls
+    drag={p:ang(e),t:performance.now(),w:0};el.setPointerCapture(e.pointerId);el.classList.add('grab');v=0;run();e.preventDefault();});
+  el.addEventListener('pointermove',e=>{tilt(e);if(!drag)return;const p=ang(e);let dp=p-drag.p;if(dp>180)dp-=360;if(dp<-180)dp+=360;
+    const now=performance.now(),dt=Math.max(1,now-drag.t);a+=dp;drag.w=drag.w*.6+(dp/dt*16.67)*.4;drag.p=p;drag.t=now;d.style.transform=`rotate(${a}deg)`;});
+  const up=()=>{if(!drag)return;v=reduce?0:Math.max(-40,Math.min(40,drag.w));drag=null;el.classList.remove('grab');run();};
+  el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  el.addEventListener('keydown',e=>{const s=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!s)return;e.preventDefault();
+    if(reduce){a+=s*30;d.style.transform=`rotate(${a}deg)`;}else{v+=s*6;run();}});
+  // arrival: the disc spins in and settles (starts once the page is on screen in the shell)
+  window.cdxKick=run;
+  if(!reduce){if(window.parent===window||window.__shown)run();else addEventListener('rh-shown',run,{once:true});}
+  cdxStop=()=>{alive=false;cancelAnimationFrame(raf);window.cdxKick=null;};
+}
+/* rewind: short synthesized tape-rewind whirr (Web Audio, starts on the click), record spins back into the sleeve,
+   then the home page opens on this work's track and the turntable winds back to it */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function rewindSound(){try{const ac=new (window.AudioContext||window.webkitAudioContext)(),t=ac.currentTime,len=ac.sampleRate*.7;
+  const buf=ac.createBuffer(1,len,ac.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;
+  const src=ac.createBufferSource();src.buffer=buf;const f=ac.createBiquadFilter();f.type='bandpass';f.Q.value=8;
+  f.frequency.setValueAtTime(600,t);f.frequency.exponentialRampToValueAtTime(5200,t+.55);
+  const g=ac.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.35,t+.05);g.gain.exponentialRampToValueAtTime(.001,t+.65);
+  src.connect(f).connect(g).connect(ac.destination);src.start();}catch(e){}}
+document.getElementById('rewind').addEventListener('click',()=>{
+  const slug=decodeURIComponent(location.hash.slice(1))||'Parlor-Social-Club',k=D.findIndex(w=>w.slug===slug),u=`index.html#${slug}`;
+  const go=()=>window.TX?TX.go(u,{slug,n:pad(k+1),title:'Index',dir:'back'}):location.href=u;
+  if(reduce)return go();
+  rewindSound();document.body.classList.add('rewinding');window.cdxKick&&cdxKick();setTimeout(go,260);});
+/* prev / next: same sweep, page swaps under the strip */
+document.getElementById('main').addEventListener('click',e=>{if(!window.TX||e.metaKey||e.ctrlKey)return;
+  const g=e.target.closest('.tags a, .tagl a');
+  if(g){e.preventDefault();const h=decodeURIComponent(g.getAttribute('href').slice(1));
+    if(h.startsWith('tag/')){const T=TAGS.get(h.slice(4));TX.go('work.html#'+h,{n:'#',title:T?T.label:'',label:'Tag',c:'#2a2ecd',dir:'fwd'});}
+    else{const k=D.findIndex(w=>w.slug===h);TX.go('work.html#'+h,{slug:h,n:pad(k+1),title:D[k].title,dir:'fwd'});}return;}
+  const a=e.target.closest('.pn a');if(!a)return;
+  e.preventDefault();const slug=decodeURIComponent(a.getAttribute('href').slice(1)),k=D.findIndex(w=>w.slug===slug);
+  TX.go('work.html#'+slug,{slug,n:pad(k+1),title:D[k].title,dir:a.classList.contains('next')?'fwd':'back'});});
+render();
+</script>
+</body>
+</html>
