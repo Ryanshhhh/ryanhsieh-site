@@ -2,69 +2,31 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<script>/* page-transition cover (assets/transition.js): paint the incoming colour before anything else */try{var P=null;try{P=parent!==window&&parent.RH_SHELL;}catch(e){}if(!P&&!sessionStorage.getItem('rh-noshell')&&!/[?&]solo\b/.test(location.search)){location.replace('index.html#/play.html'+location.hash);}}catch(e){}try{var t=JSON.parse(sessionStorage.getItem('rh-tx')||'null');if(t&&Date.now()-t.t<5000&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var R=document.documentElement;R.classList.add('tx-hold');R.style.setProperty('--txc',t.c);R.style.background=t.c;setTimeout(function(){R.classList.remove('tx-hold');R.style.background='';},2500);}}catch(e){}</script>
-<style>@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation:none}html.tx-vt::view-transition-old(root){animation:txo .24s ease-in both}html.tx-vt::view-transition-new(root){animation:txi .42s cubic-bezier(.2,.7,.2,1) .04s both}@keyframes txo{to{opacity:0;transform:translateY(-10px)}}@keyframes txi{from{opacity:0;transform:translateY(14px)}}html.tx-hold::after{content:"";position:fixed;inset:0;z-index:9998;background:var(--txc)}</style>
+<script>try{var P=null;try{P=parent!==window&&parent.RH_SHELL}catch(e){}if(!P&&!sessionStorage.getItem("rh-noshell")&&!/[?&]solo\b/.test(location.search)){location.replace("index.html#/play.html"+location.hash)}}catch(e){}try{var t=JSON.parse(sessionStorage.getItem("rh-tx")||"null");if(t&&Date.now()-t.t<5e3&&!matchMedia("(prefers-reduced-motion: reduce)").matches){var R=document.documentElement;R.classList.add("tx-hold");R.style.setProperty("--txc",t.c);R.style.background=t.c;setTimeout(function(){R.classList.remove("tx-hold");R.style.background=""},2500)}}catch(e){}</script>
+<style>@view-transition{navigation:auto}::view-transition-new(root),::view-transition-old(root){animation:none}html.tx-vt::view-transition-old(root){animation:txo .24s ease-in both}html.tx-vt::view-transition-new(root){animation:txi .42s cubic-bezier(.2,.7,.2,1) .04s both}@keyframes txo{to{opacity:0;transform:translateY(-10px)}}@keyframes txi{from{opacity:0;transform:translateY(14px)}}html.tx-hold::after{content:"";position:fixed;inset:0;z-index:9998;background:var(--txc)}</style>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Play — Ryan Hsieh</title>
+
+<meta name="description" content="Ryan Hsieh 的動態實驗：短片、迴圈動畫與海報。">
+<link rel="canonical" href="https://ryanhsieh.xyz/play.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ryan Hsieh">
+<meta property="og:title" content="Play — Ryan Hsieh">
+<meta property="og:description" content="Ryan Hsieh 的動態實驗：短片、迴圈動畫與海報。">
+<meta property="og:url" content="https://ryanhsieh.xyz/play.html">
+<meta property="og:image" content="https://ryanhsieh.xyz/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#fcfcfc">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Inter:wght@300..900&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@300;400&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-/* play = the B-side: the old /play page's 23 Vimeo loops as a tracklist of singles, plus its GIF loops and posters */
-.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:end;padding:clamp(48px,7vw,96px) 0 clamp(32px,4vw,56px);border-bottom:1px solid var(--ink)}
-.hero p{margin:0;max-width:28em}
-.views{display:flex;gap:14px}
-.hero-ctl{justify-self:end;padding-bottom:.4em}
-@media (max-width:760px){.hero-ctl{justify-self:start;padding-bottom:0}}
-.btn[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
-
-/* grid of singles */
-.grid{list-style:none;margin:0;padding:clamp(32px,4vw,56px) 0;columns:4 260px;column-gap:28px}
-.grid li{break-inside:avoid;margin:0 0 36px}
-.single{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer}
-.single .poster{position:relative;display:block;background:var(--blue-tint);overflow:hidden}
-.single img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.single .poster::after{content:"";position:absolute;left:14px;bottom:14px;width:0;height:0;border-left:16px solid var(--ground);border-top:10px solid transparent;border-bottom:10px solid transparent;opacity:0;transition:opacity .3s ease;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
-.single:hover img,.single:focus-visible img{transform:scale(1.03)}
-.single:hover .poster::after,.single:focus-visible .poster::after{opacity:1}
-.single:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
-.meta{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 0 0;border-bottom:1px solid var(--line);padding-bottom:10px}
-.meta .n,.meta .d{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
-.meta .t{font-family:var(--f-display);font-weight:300;font-size:22px;line-height:1.1}
-.single:hover .t{color:var(--blue)}
-
-/* list view: the same singles as a tracklist */
-.list .grid{columns:auto}
-.list .grid li{margin:0;border-bottom:1px solid var(--line)}
-.list .single{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;align-items:center;padding:10px 8px}
-.list .single:hover{background:rgba(42,46,205,.05)}
-.list .single .poster{width:64px;height:64px}
-.list .single img{width:64px;height:64px;object-fit:cover}
-.list .single .poster::after{display:none}
-.list .meta{border:0;padding:0;grid-template-columns:2.4em minmax(0,1fr) 5em 4em}
-.list .meta .y{display:block}
-.meta .y{display:none;font-size:13px;color:var(--mute)}
-
-/* loops: GIFs from the old page, re-encoded as muted looping video */
-.loops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px}
-.loops figure{margin:0}
-.loops video,.loops img{display:block;width:100%;height:auto;background:var(--blue-tint)}
-.loops figcaption{font-size:13px;color:var(--mute);padding-top:8px}
-
-/* player */
-dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;height:100dvh}
-dialog::backdrop{background:rgba(252,252,252,.94)}
-.player{position:relative;width:100%;height:100%;display:grid;grid-template-rows:auto 1fr auto;padding:22px var(--gut) calc(22px + env(safe-area-inset-bottom,0px))}
-.player header{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.player .ttl{font-family:var(--f-display);font-weight:300;font-size:clamp(24px,3vw,40px);line-height:1}
-.stage{display:grid;place-items:center;min-height:0;padding:24px 0}
-.frame{position:relative;max-width:100%;max-height:100%;background:#000}
-.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.player footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-@media (max-width:760px){.hero{grid-template-columns:1fr}.grid{columns:2 150px;column-gap:16px}.meta .t{font-size:18px}
-  .list .meta{grid-template-columns:2em minmax(0,1fr) 3.4em}.list .meta .y{display:none}}
-@media (prefers-reduced-motion: reduce){.single img{transition:none}}
-</style>
+<style>.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:end;padding:clamp(48px,7vw,96px) 0 clamp(32px,4vw,56px);border-bottom:1px solid var(--ink)}.hero p{margin:0;max-width:28em}.views{display:flex;gap:14px}.hero-ctl{justify-self:end;padding-bottom:.4em}@media (max-width:760px){.hero-ctl{justify-self:start;padding-bottom:0}}.btn[aria-pressed="true"]{background:var(--ink);color:var(--ground)}.grid{list-style:none;margin:0;padding:clamp(32px,4vw,56px) 0;columns:4 260px;column-gap:28px}.grid li{break-inside:avoid;margin:0 0 36px}.single{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer}.single .poster{position:relative;display:block;background:var(--blue-tint);overflow:hidden}.single img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}.single .poster::after{content:"";position:absolute;left:14px;bottom:14px;width:0;height:0;border-left:16px solid var(--ground);border-top:10px solid transparent;border-bottom:10px solid transparent;opacity:0;transition:opacity .3s ease;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}.single:focus-visible img,.single:hover img{transform:scale(1.03)}.single:focus-visible .poster::after,.single:hover .poster::after{opacity:1}.single:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.meta{display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 0 0;border-bottom:1px solid var(--line);padding-bottom:10px}.meta .d,.meta .n{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}.meta .t{font-family:var(--f-display);font-weight:300;font-size:22px;line-height:1.1}.single:hover .t{color:var(--blue)}.list .grid{columns:auto}.list .grid li{margin:0;border-bottom:1px solid var(--line)}.list .single{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;align-items:center;padding:10px 8px}.list .single:hover{background:rgba(42,46,205,.05)}.list .single .poster{width:64px;height:64px}.list .single img{width:64px;height:64px;object-fit:cover}.list .single .poster::after{display:none}.list .meta{border:0;padding:0;grid-template-columns:2.4em minmax(0,1fr) 5em 4em}.list .meta .y{display:block}.meta .y{display:none;font-size:13px;color:var(--mute)}.loops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px}.loops figure{margin:0}.loops img,.loops video{display:block;width:100%;height:auto;background:var(--blue-tint)}.loops figcaption{font-size:13px;color:var(--mute);padding-top:8px}dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;height:100dvh}dialog::backdrop{background:rgba(252,252,252,.94)}.player{position:relative;width:100%;height:100%;display:grid;grid-template-rows:auto 1fr auto;padding:22px var(--gut) calc(22px + env(safe-area-inset-bottom,0px))}.player header{display:flex;justify-content:space-between;align-items:center;gap:16px}.player .ttl{font-family:var(--f-display);font-weight:300;font-size:clamp(24px,3vw,40px);line-height:1}.stage{display:grid;place-items:center;min-height:0;padding:24px 0}.frame{position:relative;max-width:100%;max-height:100%;background:#000}.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.player footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}@media (max-width:760px){.hero{grid-template-columns:1fr}.grid{columns:2 150px;column-gap:16px}.meta .t{font-size:18px}.list .meta{grid-template-columns:2em minmax(0,1fr) 3.4em}.list .meta .y{display:none}}@media (prefers-reduced-motion: reduce){.single img{transition:none}}</style>
 </head>
 <body>
 <header class="wrap top">
@@ -109,47 +71,7 @@ dialog::backdrop{background:rgba(252,252,252,.94)}
   </div>
 </dialog>
 
-<script>
-const V=[{"id":"333475293","title":"Learning Alphabet","duration":39,"w":640,"h":636,"date":"2019-04-30"},{"id":"372214942","title":"GPU Acceleration","duration":10,"w":640,"h":320,"date":"2019-11-10"},{"id":"380949154","title":"Morning Call With X","duration":4,"w":640,"h":640,"date":"2019-12-21"},{"id":"380949449","title":"eyyyyes","duration":12,"w":640,"h":640,"date":"2019-12-21"},{"id":"380949776","title":"looop","duration":3,"w":640,"h":360,"date":"2019-12-21"},{"id":"380949834","title":"Breathin","duration":15,"w":640,"h":960,"date":"2019-12-21"},{"id":"380950237","title":"Archive","duration":5,"w":640,"h":828,"date":"2019-12-21"},{"id":"380950281","title":"Flow","duration":8,"w":640,"h":828,"date":"2019-12-21"},{"id":"380951510","title":"Orientation Schedule","duration":31,"w":640,"h":960,"date":"2019-12-21"},{"id":"380951575","title":"Club","duration":9,"w":640,"h":640,"date":"2019-12-21"},{"id":"380952623","title":"Drown","duration":5,"w":640,"h":828,"date":"2019-12-21"},{"id":"383452874","title":"Domino","duration":7,"w":640,"h":360,"date":"2020-01-08"},{"id":"383453398","title":"New Normal (Passwords)","duration":20,"w":640,"h":960,"date":"2020-01-08"},{"id":"383453493","title":"New Normal (Color)","duration":20,"w":640,"h":960,"date":"2020-01-08"},{"id":"383453533","title":"New Normal (Human)","duration":10,"w":640,"h":960,"date":"2020-01-08"},{"id":"383454179","title":"Warp","duration":3,"w":640,"h":828,"date":"2020-01-08"},{"id":"439544805","title":"Quarantine","duration":6,"w":640,"h":640,"date":"2020-07-18"},{"id":"451074605","title":"Weirdo","duration":2,"w":640,"h":640,"date":"2020-08-24"},{"id":"451075255","title":"Fever","duration":14,"w":640,"h":640,"date":"2020-08-24"},{"id":"451075462","title":"See Get","duration":5,"w":640,"h":640,"date":"2020-08-24"},{"id":"470968088","title":"大風 Big Wind","duration":7,"w":640,"h":640,"date":"2020-10-22"},{"id":"470968522","title":"雪鑽石 White Diamond","duration":3,"w":640,"h":640,"date":"2020-10-22"},{"id":"470968686","title":"Symbiosis","duration":5,"w":640,"h":640,"date":"2020-10-22"}];
-const LOOPS=[["R","R"],["Ryan_Week_05_HW","Ryan_Week_05_HW"],["To-break-2","To-break-2"],["To-stop","To-stop"],["archive","archive"],["couch-club","couch-club"],["domino","domino"]];
-const STILLS=[["Comp-2-0-00-07-07","Comp-2-0-00-07-07"],["poster_mergezone","poster_mergezone"],["poster_onetime","poster_onetime"]];
-const $=id=>document.getElementById(id), pad=n=>String(n).padStart(2,'0'), mmss=s=>`${Math.floor(s/60)}:${pad(s%60)}`;
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-$('grid').innerHTML=V.map((v,i)=>`<li><button type="button" class="single" data-i="${i}" aria-label="播放 ${esc(v.title)}">
-  <span class="poster"><img src="assets/play/${v.id}.jpg" alt="" width="${v.w}" height="${v.h}" loading="lazy"></span>
-  <span class="meta"><span class="n">${pad(i+1)}</span><span class="t">${esc(v.title)}</span><span class="y">${v.date.slice(0,4)}</span><span class="d">${mmss(v.duration)}</span></span></button></li>`).join('');
-
-$('loops').innerHTML=LOOPS.map(([f,c])=>`<li><figure><video src="assets/play/loops/${f}.mp4" poster="assets/play/loops/${f}.jpg" muted loop playsinline ${reduce?'':'autoplay'} preload="none" aria-label="${esc(c)}"></video></figure></li>`).join('')
- +STILLS.map(([f,c])=>`<li><figure><img src="assets/play/loops/${f}.jpg" alt="${esc(c)}" loading="lazy"></figure></li>`).join('');
-// only play loops that are on screen
-const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!reduce){v.preload='auto';v.play().catch(()=>{});}else v.pause();}),{rootMargin:'200px'});
-document.querySelectorAll('.loops video').forEach(v=>io.observe(v));
-
-function setView(list){document.body.classList.toggle('list',list);$('vGrid').setAttribute('aria-pressed',!list);$('vList').setAttribute('aria-pressed',list);
-  try{localStorage.setItem('rh-play-view',list?'list':'grid');}catch(e){}}
-$('vGrid').onclick=()=>setView(false);$('vList').onclick=()=>setView(true);
-try{if(localStorage.getItem('rh-play-view')==='list')setView(true);}catch(e){}
-
-/* player: Vimeo embed (works on the real site; previews that block embeds still have the Vimeo link) */
-let cur=0;const dlg=$('dlg');
-function fit(){const v=V[cur],st=dlg.querySelector('.stage'),W=st.clientWidth,H=st.clientHeight-48,r=v.w/v.h;
-  let w=Math.min(W,H*r),h=w/r;Object.assign($('pFrame').style,{width:w+'px',height:h+'px'});}
-function open(i){cur=(i+V.length)%V.length;const v=V[cur];
-  $('pTitle').textContent=`${pad(cur+1)}  ${v.title}`;$('pLink').href=`https://vimeo.com/${v.id}`;
-  $('pFrame').innerHTML=`<iframe src="https://player.vimeo.com/video/${v.id}?autoplay=1&loop=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" title="${esc(v.title)}"></iframe>`;
-  if(!dlg.open)dlg.showModal();fit();}
-function close(){$('pFrame').innerHTML='';dlg.close();}
-/* if this host blocks the Vimeo player (e.g. a preview sandbox's frame policy), show a link out instead */
-addEventListener('securitypolicyviolation',e=>{if(!/vimeo/.test(e.blockedURI||'')||!dlg.open)return;
-  $('pFrame').innerHTML=`<a href="https://vimeo.com/${V[cur].id}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-tint);color:var(--blue);font-size:15px;text-align:center;padding:24px">這個預覽環境擋住了 Vimeo 播放器，按這裡到 Vimeo 觀看 ↗</a>`;});
-$('grid').addEventListener('click',e=>{const b=e.target.closest('.single');if(b)open(+b.dataset.i);});
-$('pClose').onclick=close;$('pPrev').onclick=()=>open(cur-1);$('pNext').onclick=()=>open(cur+1);
-dlg.addEventListener('cancel',e=>{e.preventDefault();close();});
-dlg.addEventListener('keydown',e=>{if(e.key==='ArrowRight')open(cur+1);if(e.key==='ArrowLeft')open(cur-1);});
-addEventListener('resize',()=>{if(dlg.open)fit();});
-</script>
+<script>const V=[{id:"333475293",title:"Learning Alphabet",duration:39,w:640,h:636,date:"2019-04-30"},{id:"372214942",title:"GPU Acceleration",duration:10,w:640,h:320,date:"2019-11-10"},{id:"380949154",title:"Morning Call With X",duration:4,w:640,h:640,date:"2019-12-21"},{id:"380949449",title:"eyyyyes",duration:12,w:640,h:640,date:"2019-12-21"},{id:"380949776",title:"looop",duration:3,w:640,h:360,date:"2019-12-21"},{id:"380949834",title:"Breathin",duration:15,w:640,h:960,date:"2019-12-21"},{id:"380950237",title:"Archive",duration:5,w:640,h:828,date:"2019-12-21"},{id:"380950281",title:"Flow",duration:8,w:640,h:828,date:"2019-12-21"},{id:"380951510",title:"Orientation Schedule",duration:31,w:640,h:960,date:"2019-12-21"},{id:"380951575",title:"Club",duration:9,w:640,h:640,date:"2019-12-21"},{id:"380952623",title:"Drown",duration:5,w:640,h:828,date:"2019-12-21"},{id:"383452874",title:"Domino",duration:7,w:640,h:360,date:"2020-01-08"},{id:"383453398",title:"New Normal (Passwords)",duration:20,w:640,h:960,date:"2020-01-08"},{id:"383453493",title:"New Normal (Color)",duration:20,w:640,h:960,date:"2020-01-08"},{id:"383453533",title:"New Normal (Human)",duration:10,w:640,h:960,date:"2020-01-08"},{id:"383454179",title:"Warp",duration:3,w:640,h:828,date:"2020-01-08"},{id:"439544805",title:"Quarantine",duration:6,w:640,h:640,date:"2020-07-18"},{id:"451074605",title:"Weirdo",duration:2,w:640,h:640,date:"2020-08-24"},{id:"451075255",title:"Fever",duration:14,w:640,h:640,date:"2020-08-24"},{id:"451075462",title:"See Get",duration:5,w:640,h:640,date:"2020-08-24"},{id:"470968088",title:"大風 Big Wind",duration:7,w:640,h:640,date:"2020-10-22"},{id:"470968522",title:"雪鑽石 White Diamond",duration:3,w:640,h:640,date:"2020-10-22"},{id:"470968686",title:"Symbiosis",duration:5,w:640,h:640,date:"2020-10-22"}];const LOOPS=[["R","R"],["Ryan_Week_05_HW","Ryan_Week_05_HW"],["To-break-2","To-break-2"],["To-stop","To-stop"],["archive","archive"],["couch-club","couch-club"],["domino","domino"]];const STILLS=[["Comp-2-0-00-07-07","Comp-2-0-00-07-07"],["poster_mergezone","poster_mergezone"],["poster_onetime","poster_onetime"]];const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,"0"),mmss=s=>`${Math.floor(s/60)}:${pad(s%60)}`;const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;$("grid").innerHTML=V.map((v,i)=>`<li><button type="button" class="single" data-i="${i}" aria-label="播放 ${esc(v.title)}">\n  <span class="poster"><img src="assets/play/${v.id}.jpg" alt="" width="${v.w}" height="${v.h}" loading="lazy"></span>\n  <span class="meta"><span class="n">${pad(i+1)}</span><span class="t">${esc(v.title)}</span><span class="y">${v.date.slice(0,4)}</span><span class="d">${mmss(v.duration)}</span></span></button></li>`).join("");$("loops").innerHTML=LOOPS.map(([f,c])=>`<li><figure><video src="assets/play/loops/${f}.mp4" poster="assets/play/loops/${f}.jpg" muted loop playsinline ${reduce?"":"autoplay"} preload="none" aria-label="${esc(c)}"></video></figure></li>`).join("")+STILLS.map(([f,c])=>`<li><figure><img src="assets/play/loops/${f}.jpg" alt="${esc(c)}" loading="lazy"></figure></li>`).join("");const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!reduce){v.preload="auto";v.play().catch(()=>{})}else v.pause()}),{rootMargin:"200px"});document.querySelectorAll(".loops video").forEach(v=>io.observe(v));function setView(list){document.body.classList.toggle("list",list);$("vGrid").setAttribute("aria-pressed",!list);$("vList").setAttribute("aria-pressed",list);try{localStorage.setItem("rh-play-view",list?"list":"grid")}catch(e){}}$("vGrid").onclick=()=>setView(false);$("vList").onclick=()=>setView(true);try{if(localStorage.getItem("rh-play-view")==="list")setView(true)}catch(e){}let cur=0;const dlg=$("dlg");function fit(){const v=V[cur],st=dlg.querySelector(".stage"),W=st.clientWidth,H=st.clientHeight-48,r=v.w/v.h;let w=Math.min(W,H*r),h=w/r;Object.assign($("pFrame").style,{width:w+"px",height:h+"px"})}function open(i){cur=(i+V.length)%V.length;const v=V[cur];$("pTitle").textContent=`${pad(cur+1)}  ${v.title}`;$("pLink").href=`https://vimeo.com/${v.id}`;$("pFrame").innerHTML=`<iframe src="https://player.vimeo.com/video/${v.id}?autoplay=1&loop=1&title=0&byline=0&portrait=0&dnt=1" allow="autoplay; fullscreen; picture-in-picture" title="${esc(v.title)}"></iframe>`;if(!dlg.open)dlg.showModal();fit()}function close(){$("pFrame").innerHTML="";dlg.close()}addEventListener("securitypolicyviolation",e=>{if(!/vimeo/.test(e.blockedURI||"")||!dlg.open)return;$("pFrame").innerHTML=`<a href="https://vimeo.com/${V[cur].id}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--blue-tint);color:var(--blue);font-size:15px;text-align:center;padding:24px">這個預覽環境擋住了 Vimeo 播放器，按這裡到 Vimeo 觀看 ↗</a>`});$("grid").addEventListener("click",e=>{const b=e.target.closest(".single");if(b)open(+b.dataset.i)});$("pClose").onclick=close;$("pPrev").onclick=()=>open(cur-1);$("pNext").onclick=()=>open(cur+1);dlg.addEventListener("cancel",e=>{e.preventDefault();close()});dlg.addEventListener("keydown",e=>{if(e.key==="ArrowRight")open(cur+1);if(e.key==="ArrowLeft")open(cur-1)});addEventListener("resize",()=>{if(dlg.open)fit()})</script>
 <script src="assets/transition.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+上傳 v73 前，先在 GitHub Desktop 的 repo 資料夾刪掉這些（網站已經用不到）：
+
+.DS_Store
+assets/.DS_Store
+assets/about/About_2.jpg
+assets/about/IMG_4158.jpg
+assets/about/zoom-triptych.jpg
+assets/thumbs/（整個資料夾）
+assets/works/.DS_Store
+
+.DS_Store 是 Mac 自動產生的隱藏檔，在 Finder 按 Cmd+Shift+. 才看得到。
